@@ -1,3 +1,12 @@
+@import url("https://fonts.googleapis.com/css2?family=Cinzel&family=Tiro+Devanagari+Sanskrit&display=swap");
+/**
+ * Tailwind CSS imports
+ * View the full documentation at https://tailwindcss.com
+ */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 /**
  * WHAT IS THIS FILE?
  *
@@ -14,16 +23,22 @@
   --qwik-dirty-black: #1d2033;
 
   --text-color: #ffffff;
-  --main-background: #1c224a;
+  --main-background: #000000;
   --header-background: var(--main-background);
-  --footer-background: #0d0c25;
+  --footer-background: #000000;
+}
+
+@layer utilities {
+  .font-hindi {
+    font-family: "Tiro Devanagari Sanskrit", serif;
+  }
 }
 
 /* SHELL ---------------------------------------- */
 html {
-  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
-    'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
-    'Segoe UI Symbol', 'Noto Color Emoji';
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   background: var(--footer-background);
 }
 
@@ -127,9 +142,9 @@ html {
   -moz-tab-size: 4;
   -o-tab-size: 4;
   tab-size: 4;
-  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
-    'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
-    'Segoe UI Symbol', 'Noto Color Emoji';
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 
 body {

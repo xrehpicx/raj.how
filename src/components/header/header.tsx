@@ -1,34 +1,11 @@
-import { component$ } from '@builder.io/qwik';
-import { QwikLogo } from '../icons/qwik';
-import styles from './header.module.css';
+import { component$ } from "@builder.io/qwik";
+// import { QwikLogo } from "../icons/qwik";
 
-export default component$(() => {
+export default component$((props: { name: string; subtitle: string }) => {
   return (
-    <header class={styles.header}>
-      <div class={styles.wrapper}>
-        <div class={styles.logo}>
-          <a href="/" title="qwik">
-            <QwikLogo height={50} width={143} />
-          </a>
-        </div>
-        <ul>
-          <li>
-            <a href="https://qwik.builder.io/docs/components/overview/" target="_blank">
-              Docs
-            </a>
-          </li>
-          <li>
-            <a href="https://qwik.builder.io/examples/introduction/hello-world/" target="_blank">
-              Examples
-            </a>
-          </li>
-          <li>
-            <a href="https://qwik.builder.io/tutorial/welcome/overview/" target="_blank">
-              Tutorials
-            </a>
-          </li>
-        </ul>
-      </div>
+    <header class="pt-[20vh] container max-w-xl mx-auto flex-1">
+      <h4 class="font-bold">{props.name}</h4>
+      <p>{props.subtitle}</p>
     </header>
   );
 });
