@@ -23,9 +23,9 @@
   --qwik-dirty-black: #1d2033;
 
   --text-color: #ffffff;
-  --main-background: #000000;
+  --main-background: #141518;
   --header-background: var(--main-background);
-  --footer-background: #000000;
+  --footer-background: #141518;
 }
 
 @layer utilities {
