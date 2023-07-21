@@ -100,10 +100,10 @@ a {
   color: var(--qwik-light-blue);
 }
 
-a:hover {
-  text-decoration: underline;
-  color: var(--qwik-light-blue);
-}
+/* a:hover { */
+/*   text-decoration: underline; */
+/*   color: var(--qwik-light-blue); */
+/* } */
 
 code {
   background: rgba(230, 230, 230, 0.3);
