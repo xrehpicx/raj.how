@@ -1,0 +1,38 @@
+:root {
+  --notion-max-width: auto;
+}
+
+.notion-page {
+  padding: 0;
+}
+.notion-page > .notion-text {
+  text-wrap: balance;
+}
+
+.notion-text {
+  @apply text-sm;
+}
+
+.notion-purple {
+  @apply text-purple-600;
+}
+.notion-link {
+  /* @apply text-foreground; */
+}
+
+.notion-bookmark {
+  @apply rounded-lg border md:flex-row flex-col-reverse;
+
+  & > div:first-child {
+    @apply flex-none md:flex-1 md:basis-36;
+  }
+  .notion-bookmark-title {
+    @apply text-lg;
+  }
+  .notion-bookmark-link {
+    @apply opacity-80;
+  }
+  .notion-bookmark-image {
+    @apply block;
+  }
+}
