@@ -1,4 +1,5 @@
 import { About } from "@/components/About";
+import { Pages } from "@/components/Pages";
 import { component$ } from "@builder.io/qwik";
 import { routeLoader$ } from "@builder.io/qwik-city";
 import { NotionAPI } from "notion-client";
@@ -16,6 +17,7 @@ export const useAbout = routeLoader$(async () => {
   const title = getPageTitle(recordMap);
   return { data: recordMap, title };
 });
+
 export const usePage = routeLoader$(async () => {
   const notion = new NotionAPI();
   const collectionItemId = "3df0773458ab497c9650132355a7dcb2";
@@ -27,6 +29,30 @@ export const usePage = routeLoader$(async () => {
   return { data: recordMap, title, subtitle, desc };
 });
 
+export const useBlogs = routeLoader$(async () => {
+  const notion = new NotionAPI();
+  const collectionItemId = "cd86a9e6ac0146c7a15a384a3f0405f4";
+  const recordMap = await notion.getPage(collectionItemId);
+
+  const collection_id = Object.keys(recordMap.collection_query)[0];
+  const blocks = Object.values(recordMap.block).filter(
+    (v) => v.value.type === "page" && v.value.parent_id === collection_id
+  );
+
+  const projects = blocks
+    .map((block) => {
+      return {
+        id: block.value.id,
+        title: getBlockTitle(block.value, recordMap),
+        desc: getPageProperty("desc", block.value, recordMap) as string,
+        public: getPageProperty("Published", block.value, recordMap) === "yes",
+      };
+    })
+    .filter((d) => d.public);
+
+  return { title: getPageTitle(recordMap), value: projects };
+});
+
 export const useProjects = routeLoader$(async () => {
   const notion = new NotionAPI();
   const collectionItemId = "8db89db3e2a742d3864363683c009415";
@@ -36,7 +62,6 @@ export const useProjects = routeLoader$(async () => {
   const blocks = Object.values(recordMap.block).filter(
     (v) => v.value.type === "page" && v.value.parent_id === collection_id
   );
-  console.log(Object.values(recordMap.block));
 
   const projects = blocks.map(async (block) => {
     return {
@@ -53,6 +78,7 @@ export const useProjects = routeLoader$(async () => {
 const Hero = component$(() => {
   const page = usePage();
   const projects = useProjects().value;
+
   return (
     <div class="mt-[20%] pb-10 max-w-xl mx-auto relative animate-fade-in-up">
       <h1 class="text-4xl animate-fade-in-up font-display">
@@ -94,9 +120,10 @@ const Hero = component$(() => {
 
 export default component$(() => {
   return (
-    <div class="container mx-auto">
+    <div class="container pb-[100px] mx-auto">
       <Hero />
       <About />
+      <Pages />
     </div>
   );
 });

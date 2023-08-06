@@ -25,4 +25,6 @@ function ReactNRenderer({
   );
 }
 
-export const StyledNotionClientRenderer = qwikify$(ReactNRenderer);
+export const StyledNotionClientRenderer = qwikify$(ReactNRenderer, {
+  eagerness: "hover",
+});
