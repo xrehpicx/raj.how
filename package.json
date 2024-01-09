@@ -30,6 +30,7 @@
     "react-hooks": "^1.0.1",
     "react-notion-x": "^6.16.0",
     "sass": "^1.69.7",
+    "sharp": "^0.33.1",
     "tailwind-merge": "^1.14.0",
     "tailwindcss-animate": "^1.0.7"
   },
