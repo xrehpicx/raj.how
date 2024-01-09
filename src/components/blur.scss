@@ -1,0 +1,49 @@
+:root {
+  --page-top: 128px;
+  --header-height: 48px;
+  --footer-height: 48px;
+  --icon-primary: var(--mono11);
+  --icon-secondary: transparent;
+  --layer-sticky: 10;
+  --mask-visible: #000;
+  --mask-hidden: transparent;
+  --mask-invisible: transparent;
+}
+.top-blur {
+  position: relative;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+  pointer-events: none;
+  --h: min(96px, var(--page-top));
+  width: 100%;
+  height: var(--h);
+  z-index: 1;
+  -webkit-backdrop-filter: blur(5px);
+  backdrop-filter: blur(5px);
+  opacity: 0.95;
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    var(--mask-visible) 25%,
+    var(--mask-hidden)
+  );
+  mask-image: linear-gradient(
+    to bottom,
+    var(--mask-visible) 25%,
+    var(--mask-hidden)
+  );
+  box-sizing: border-box; /* New addition */
+  left: 0; /* New addition */
+  right: 0; /* New addition */
+}
+
+// .top-blur::after {
+//   content: "";
+//   position: absolute;
+//   // inset: 0;
+//   background: linear-gradient(
+//     to bottom,
+//     var(--bg, transparent),
+//     var(--transparent, transparent)
+//   );
+// }

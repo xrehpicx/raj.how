@@ -1,0 +1,58 @@
+:root {
+  --notion-max-width: 100%;
+  --notion-font: var(--display-font);
+}
+
+.notion {
+  @apply font-display;
+}
+
+.notion-page {
+  @apply px-0;
+
+  .notion-asset-wrapper iframe {
+    @apply bg-transparent;
+  }
+  .notion-column {
+    @apply overflow-hidden;
+  }
+}
+
+.notion-collection-header-title {
+  @apply font-display font-medium text-xl;
+}
+
+.stories-section {
+  .notion-collection-header {
+    @apply hidden;
+  }
+  .notion-collection-card-cover {
+    @apply h-24;
+  }
+  .notion-collection-card {
+    @apply rounded-sm opacity-90 backdrop-contrast-200 backdrop-brightness-150 backdrop-saturate-200;
+  }
+  .notion-gallery-grid {
+    @apply border-none pt-0;
+  }
+  .notion-gallery-grid-size-medium {
+    @apply md:grid-cols-2;
+  }
+}
+
+.notion-bookmark {
+  @apply rounded-lg border md:flex-row flex-col-reverse;
+
+  & > div:first-child {
+    @apply flex-none md:flex-1 md:basis-36;
+  }
+  .notion-bookmark-title {
+    @apply font-display font-bold text-lg;
+  }
+  .notion-bookmark-link {
+    @apply opacity-60;
+  }
+  .notion-bookmark-image {
+    @apply block;
+  }
+}
