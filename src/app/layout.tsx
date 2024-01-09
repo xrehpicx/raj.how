@@ -8,8 +8,8 @@ const inter = Inter({ subsets: ["latin"], variable: "--body-font" });
 const dm = DM_Sans({ subsets: ["latin"], variable: "--display-font" });
 
 export const metadata: Metadata = {
-  title: "./raj",
-  description: "My experiments",
+  title: "Raj Sharma - Portfolio",
+  description: "Building experimental design systems",
   twitter: {
     card: "summary_large_image",
     site: "@xrehpicx",
