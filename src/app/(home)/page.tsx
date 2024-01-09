@@ -24,11 +24,7 @@ export default function Page() {
           }}
         />
         <header className="my-2">
-          <GradientProvider>
-            <h1 className="text-xl font-display animate-in font-medium">
-              ./raj
-            </h1>
-          </GradientProvider>
+          <h1 className="text-xl font-display animate-in font-medium">./raj</h1>
         </header>
         <div className="">
           <p className="text-xs italic">I like to build things</p>
