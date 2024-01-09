@@ -55,7 +55,7 @@ export function BackgroundGradentProvider({
   return (
     <motion.div
       className={cn(
-        "fixed overflow-hidden w-full h-full opacity-20 top-0 left-0",
+        "fixed overflow-hidden w-full h-full opacity-60 top-0 left-0",
         className,
       )}
     >

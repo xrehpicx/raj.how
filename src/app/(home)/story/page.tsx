@@ -43,7 +43,7 @@ export default async function Story({
           grainHeight: 1,
         }}
       />
-      <BackgroundGradentProvider className="-z-10 h-screen w-full opacity-90" />
+      <BackgroundGradentProvider className="-z-10 h-screen w-full opacity-60" />
       <SymetricGradProvider gradient_class={cn("rotate-0")} className="w-full">
         <Image
           width={400}
