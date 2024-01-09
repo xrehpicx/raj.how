@@ -44,15 +44,13 @@ export default async function Story({
         }}
       />
       <BackgroundGradentProvider className="-z-10 h-screen w-full opacity-60" />
-      <SymetricGradProvider gradient_class={cn("rotate-0")} className="w-full">
-        <Image
-          width={400}
-          height={300}
-          src={images[0]}
-          alt={title}
-          className="w-full h-48 object-cover opacity-70 backdrop-saturate-200 backdrop-contrast-200 -z-50"
-        />
-      </SymetricGradProvider>
+      <Image
+        width={400}
+        height={300}
+        src={images[0]}
+        alt={title}
+        className="w-full h-48 object-cover opacity-70 backdrop-saturate-200 backdrop-contrast-200 -z-50"
+      />
       <div className="container py-12 max-w-2xl">
         <h1 className="text-2xl text-center text-pretty font-medium">
           {title}
