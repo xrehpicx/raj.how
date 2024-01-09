@@ -8,16 +8,16 @@ import { motion } from "framer-motion";
 
 export function GradientProvider({ children }: { children: React.ReactNode }) {
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      className="relative w-fit"
-    >
-      <div className="absolute rotate-180 -z-[5] w-[600px] h-[800px] opacity-60 top-1/2 -translate-x-1/2 -translate-y-1/2 left-1/2">
+    <div className="relative w-fit">
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        className="absolute rotate-180 -z-[5] w-[600px] h-[800px] opacity-60 top-1/2 -translate-x-1/2 -translate-y-1/2 left-1/2"
+      >
         <Image src={gradient} alt="gradient" />
-      </div>
+      </motion.div>
       {children}
-    </motion.div>
+    </div>
   );
 }
 
@@ -31,19 +31,17 @@ export function SymetricGradProvider({
   gradient_class?: string;
 }) {
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      className={cn("relative w-fit", className)}
-    >
-      <div
+    <motion.div className={cn("relative w-fit", className)}>
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
         className={cn(
           "absolute w-full -z-10 h-[800px] opacity-70 top-1/4 rotate-180 -translate-x-1/2 -translate-y-1/2 left-1/2",
           gradient_class,
         )}
       >
         <Image src={symetric_gradient} alt="gradient" />
-      </div>
+      </motion.div>
       {children}
     </motion.div>
   );

@@ -1,8 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
-// Grain.tsx
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useCallback } from "react";
 
 type GrainOptions = {
   patternWidth?: number;
@@ -18,68 +16,76 @@ export const GrainProvider = ({
 }: {
   grain_options?: GrainOptions;
 }) => {
-  const providerRef = useRef<HTMLDivElement>(null);
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+  const animationFrameId = useRef<number>();
 
-  // Function to generate and apply grain effect
-  const applyGrain = (ele: HTMLElement, opt: GrainOptions) => {
-    const canvas = document.createElement("canvas");
-    const ctx = canvas.getContext("2d");
-    if (!ctx) return;
+  const createGrainPattern = (
+    ctx: CanvasRenderingContext2D,
+    opt: GrainOptions,
+  ) => {
+    const patternCanvas = document.createElement("canvas");
+    const pctx = patternCanvas.getContext("2d");
 
-    canvas.width = opt.patternWidth ?? 100;
-    canvas.height = opt.patternHeight ?? 100;
+    patternCanvas.width = opt.patternWidth ?? 200;
+    patternCanvas.height = opt.patternHeight ?? 200;
 
-    for (let w = 0; w < canvas.width; w += opt.grainDensity ?? 1) {
-      for (let h = 0; h < canvas.height; h += opt.grainDensity ?? 1) {
-        const rgb = Math.floor(Math.random() * 256);
-        ctx.fillStyle = `rgba(${rgb / 2}, ${rgb / 2}, ${rgb}, ${opt.grainOpacity ?? 0.1
-          })`;
-        ctx.fillRect(w, h, opt.grainWidth ?? 1, opt.grainHeight ?? 1);
+    if (pctx) {
+      for (let w = 0; w < patternCanvas.width; w += opt.grainDensity ?? 1) {
+        for (let h = 0; h < patternCanvas.height; h += opt.grainDensity ?? 1) {
+          const rgb = Math.floor(Math.random() * 256);
+          pctx.fillStyle = `rgba(${rgb / 2}, ${rgb / 2}, ${rgb}, ${opt.grainOpacity ?? 0.1
+            })`;
+          pctx.fillRect(w, h, opt.grainWidth ?? 1, opt.grainHeight ?? 1);
+        }
       }
     }
 
-    ele.style.backgroundImage = `url(${canvas.toDataURL("image/png")})`;
+    return ctx.createPattern(patternCanvas, "repeat");
   };
 
-  useEffect(() => {
-    const element = providerRef.current;
-    if (!element) return;
+  const animate = useCallback(() => {
+    const canvas = canvasRef.current;
+    if (canvas) {
+      const ctx = canvas.getContext("2d");
+      if (ctx) {
+        const options: GrainOptions = {
+          patternWidth: 200,
+          patternHeight: 200,
+          grainOpacity: 0.05,
+          grainDensity: 1,
+          grainWidth: 1,
+          grainHeight: 1,
+        };
 
-    // Define options here
-    const options: GrainOptions = {
-      patternWidth: 240,
-      patternHeight: 300,
-      grainOpacity: 0.05,
-      grainDensity: 1,
-      grainWidth: 2,
-      grainHeight: 2,
-    };
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
 
-    // Apply grain initially
-    applyGrain(element, grain_options ?? options);
+        const pattern = createGrainPattern(ctx, grain_options ?? options);
+        if (pattern) {
+          ctx.fillStyle = pattern;
+          ctx.fillRect(0, 0, canvas.width, canvas.height);
+        }
 
-    // Set interval to update grain
-    const intervalId = setInterval(() => {
-      applyGrain(element, grain_options ?? options);
-    }, 100);
-
-    // Cleanup function
-    return () => clearInterval(intervalId);
+        animationFrameId.current = requestAnimationFrame(animate);
+      }
+    }
   }, [grain_options]);
 
+  useEffect(() => {
+    animationFrameId.current = requestAnimationFrame(animate);
+    return () => {
+      if (animationFrameId.current) {
+        cancelAnimationFrame(animationFrameId.current);
+      }
+    };
+  }, [animate]);
+
   return (
-    <motion.div
-      initial={{
-        opacity: 0,
-      }}
-      animate={{
-        opacity: 1,
-      }}
-      ref={providerRef}
-      id="grained-bg"
+    <canvas
+      ref={canvasRef}
+      id="grained-canvas"
       className="fixed left-0 top-0 inset-0 z-50 pointer-events-none w-full h-full"
-    ></motion.div>
+    />
   );
 };
-
 export default GrainProvider;
