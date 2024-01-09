@@ -9,12 +9,16 @@ const dm = DM_Sans({ subsets: ["latin"], variable: "--display-font" });
 
 export const metadata: Metadata = {
   title: "Raj Sharma - Portfolio",
+  creator: "Raj Sharma",
   description: "Building experimental design systems",
   twitter: {
     card: "summary_large_image",
     site: "@xrehpicx",
     creator: "@xrehpicx",
-    images: ["https://raj.how/opengraph-image.png"],
+    images: ["twitter-image.png"],
+  },
+  openGraph: {
+    images: "/opengraph-image.png",
   },
 };
 
