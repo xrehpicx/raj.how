@@ -10,6 +10,12 @@ const dm = DM_Sans({ subsets: ["latin"], variable: "--display-font" });
 export const metadata: Metadata = {
   title: "./raj",
   description: "My experiments",
+  twitter: {
+    card: "summary_large_image",
+    site: "@xrehpicx",
+    creator: "@xrehpicx",
+    images: ["https://raj.how/opengraph-image.png"],
+  },
 };
 
 export default function RootLayout({
