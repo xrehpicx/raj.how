@@ -8,10 +8,11 @@ import { StyledNotion } from "@/components/notion/styled";
 import { ExternalLink } from "lucide-react";
 import { Footer } from "./Footer";
 import { Connect } from "./Connect";
+import { cn } from "@/lib/utils";
 
 export default function Page() {
   return (
-    <main>
+    <main className="animate-fade-in">
       <div className="container py-12 max-w-xl">
         <GrainProvider
           grain_options={{
@@ -24,11 +25,13 @@ export default function Page() {
           }}
         />
         <header className="my-2">
-          <GradientProvider>
-            <h1 className="text-xl font-display font-medium">./raj</h1>
-          </GradientProvider>
+          {/* <GradientProvider> */}
+          <h1 className="text-xl animate-fade-in-from-bottom font-display font-medium">
+            ./raj
+          </h1>
+          {/* </GradientProvider> */}
         </header>
-        <div className="">
+        <div className="animate-fade-in-from-bottom animation-delay-600">
           <p className="text-xs italic">I like to build things</p>
           <p className="text-xs">
             Software Engineer{" "}
@@ -121,6 +124,7 @@ function Projects() {
 
       <div className="sm:grid-cols-2 grid-cols-1 grid gap-2">
         <Project
+          className="animate-fade-in-from-bottom animation-delay-[1200]"
           title="PPEC"
           description={
             "PhonePe’s internal cloud provisioning service with fine grain control over provisioning and network, I made the entire ux ui flow for this, very cool service"
@@ -128,6 +132,7 @@ function Projects() {
           href="https://tech.phonepe.com/heres-everything-you-need-to-know-about-phonepes-internal-cloud-provisioning-service/"
         />
         <Project
+          className="animate-fade-in-from-bottom animation-delay-[2400]"
           title="Chakshu"
           description={
             "Server inventory management service that manages procurement to server onboarding."
@@ -135,6 +140,7 @@ function Projects() {
           href="https://tech.phonepe.com/phonepes-server-state-management-via-senzu-and-pious-an-overview/"
         />
         <Project
+          className="animate-fade-in-from-bottom animation-delay-[4800]"
           title="Makima"
           href="https://github.com/xrehpicx/makima"
           description={`Manage servers using natural language.
@@ -142,6 +148,7 @@ Keep track of stats of various things by memory.
         Schedule absolutely anything across all kind of tasks by making the ai talk to itself in the future.`}
         />
         <Project
+          className="animate-fade-in-from-bottom animation-delay-[9600]"
           title="PEE (Project Environment Executor)"
           description={
             "A tmux session manager with a tui and config control to setup tmux sessions."
@@ -157,13 +164,15 @@ function Project({
   title,
   description,
   href,
+  className,
 }: {
   title: string;
   description: JSX.Element | string;
   href?: string;
+  className?: string;
 }) {
   return (
-    <div className="mt-4">
+    <div className={cn("mt-4", className)}>
       <div className="flex items-center gap-1">
         <h4 className="font-display font-medium text-sm">{title}</h4>
         {href ? (

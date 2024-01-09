@@ -1,5 +1,6 @@
 "use client";
 
+import { motion } from "framer-motion";
 // Grain.tsx
 import React, { useEffect, useRef } from "react";
 
@@ -67,11 +68,17 @@ export const GrainProvider = ({
   }, [grain_options]);
 
   return (
-    <div
+    <motion.div
+      initial={{
+        opacity: 0,
+      }}
+      animate={{
+        opacity: 1,
+      }}
       ref={providerRef}
       id="grained-bg"
       className="fixed left-0 top-0 inset-0 z-50 pointer-events-none w-full h-full"
-    ></div>
+    ></motion.div>
   );
 };
 
