@@ -13,7 +13,7 @@
     --popover: 0 0% 100%;
     --popover-foreground: 20 14.3% 4.1%;
 
-    --primary: 180 80% 30%;
+    --primary: 240 60% 60%;
     --primary-foreground: 60 9.1% 97.8%;
 
     --secondary: 60 4.8% 95.9%;
@@ -73,4 +73,8 @@
   body {
     @apply bg-background text-foreground;
   }
+}
+
+a {
+  @apply text-primary font-medium hover:underline underline-offset-2;
 }

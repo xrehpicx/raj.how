@@ -29,10 +29,7 @@ export default function Page() {
         <div className="">
           <p className="text-xs italic">I like to build things</p>
           <p className="text-xs">
-            Software Engineer{" "}
-            <a className="text-primary" href="https://phonepe.com">
-              @PhonePe
-            </a>
+            Software Engineer <a href="https://phonepe.com">@PhonePe</a>
           </p>
         </div>
         <section>
@@ -49,7 +46,7 @@ export default function Page() {
         <section className="connect-section">
           <Connect />
         </section>
-        <BackgroundGradentProvider className="h-screen -z-10 w-full opacity-60 saturate-200" />
+        <BackgroundGradentProvider className="h-screen -z-10 w-full opacity-60" />
       </div>
       <Footer />
     </main>
@@ -60,7 +57,7 @@ function Now() {
   return (
     <div className="mt-4">
       <h3 className="font-display font-medium">Now</h3>
-      <div className="text-xs text-muted-foreground">
+      <div className="text-xs text-foreground/80">
         <p>
           Experimenting with anything I can find before we get replaced by AGI.{" "}
           <span className="italic font-serif">
@@ -68,21 +65,13 @@ function Now() {
           </span>
         </p>
         <p className="mt-4">
-          Building Tools{" "}
-          <a className="text-primary" href="https://phonepe.com">
-            @PhonePe
-          </a>{" "}
-          to manage thousands of servers and their network.
+          Building Tools <a href="https://phonepe.com">@PhonePe</a> to manage
+          thousands of servers and their network.
         </p>
         <p className="mt-4">
           Trying out design system inspired by{" "}
-          <a className="text-primary" href="https://paco.me/">
-            @paco
-          </a>{" "}
-          &{" "}
-          <a className="text-primary" href="https://rauno.me/projects">
-            @runo
-          </a>
+          <a href="https://paco.me/">@paco</a> &{" "}
+          <a href="https://rauno.me/projects">@runo</a>
           {"'s"} designs.
         </p>
       </div>
@@ -95,7 +84,7 @@ function Stories() {
     <div className="mt-6">
       <div className="mb-2">
         <h3 className="font-display font-medium">Stories</h3>
-        <p className="text-xs italic text-muted-foreground">
+        <p className="text-xs italic text-foreground/80">
           My tech blogs and other writings.
         </p>
       </div>
@@ -109,11 +98,9 @@ function Projects() {
     <div className="mt-6">
       <div className="">
         <h3 className="font-display font-medium">Favorite Projects</h3>
-        <p className="text-xs italic text-muted-foreground">
+        <p className="text-xs italic text-foreground/80">
           You can check out all of them on my{" "}
-          <a className="text-primary" href="https://github.com/xrehpicx">
-            github.
-          </a>
+          <a href="https://github.com/xrehpicx">github.</a>
         </p>
       </div>
 
@@ -165,14 +152,12 @@ function Project({
       <div className="flex items-center gap-1">
         <h4 className="font-display font-medium text-sm">{title}</h4>
         {href ? (
-          <a href={href} className="group" target="_blank">
-            <ExternalLink className="w-3 group-hover:animate-bounce" />
+          <a href={href} className="" target="_blank">
+            <ExternalLink className="w-3" />
           </a>
         ) : null}
       </div>
-      <p className="text-xs text-muted-foreground text-balance">
-        {description}
-      </p>
+      <p className="text-xs text-foreground/80 text-balance">{description}</p>
     </div>
   );
 }

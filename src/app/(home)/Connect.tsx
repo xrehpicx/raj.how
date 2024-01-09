@@ -22,7 +22,7 @@ export function Connect() {
     <div className="mt-6">
       <div className="mb-2">
         <h3 className="font-display font-medium">Connect</h3>
-        <p className="text-xs flex gap-1 flex-wrap italic text-muted-foreground">
+        <p className="text-xs flex gap-1 flex-wrap italic text-foreground/80">
           reach me at{" "}
           <a
             target="_blank"

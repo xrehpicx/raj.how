@@ -54,18 +54,22 @@ export function BackgroundGradentProvider({
 }) {
   return (
     <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
       className={cn(
-        "fixed overflow-hidden w-full h-full opacity-50 top-0 left-0",
+        "fixed overflow-hidden w-full h-full opacity-20 top-0 left-0",
         className,
       )}
     >
-      <Image
-        className="w-full h-full object-cover"
-        src={background_gradient}
-        alt="gradient"
-      />
+      <motion.div
+        className="w-full h-full"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+      >
+        <Image
+          className="w-full h-full object-cover"
+          src={background_gradient}
+          alt="gradient"
+        />
+      </motion.div>
     </motion.div>
   );
 }
