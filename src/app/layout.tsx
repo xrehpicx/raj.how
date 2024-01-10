@@ -3,6 +3,7 @@ import { DM_Sans, Inter } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 import { TopBlur } from "@/components/top-blur";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const inter = Inter({ subsets: ["latin"], variable: "--body-font" });
 const dm = DM_Sans({ subsets: ["latin"], variable: "--display-font" });
@@ -30,6 +31,7 @@ export default function RootLayout({
 }) {
   return (
     <html suppressHydrationWarning lang="en">
+      <SpeedInsights />
       <body
         className={cn(inter.className, inter.variable, dm.variable, "relative")}
       >
