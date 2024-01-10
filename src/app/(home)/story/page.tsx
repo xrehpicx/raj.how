@@ -16,6 +16,7 @@ import { cn } from "@/lib/utils";
 import { Footer } from "../Footer";
 import { Connect } from "../Connect";
 import { Home } from "lucide-react";
+import Link from "next/link";
 
 export default async function Story({
   searchParams,
@@ -56,10 +57,12 @@ export default async function Story({
         <h1 className="text-2xl text-center text-pretty font-medium">
           {title}
         </h1>
-        <div className="border sticky top-12 z-50 mt-2 mx-auto backdrop-blur border-foreground/20 backdrop-saturate-100 backdrop-contrast-125 p-1 px-2 w-fit rounded-full flex gap-1 items-center">
-          <Home className="animate-in" size={12} />
-          <span className="text-xs">Home</span>
-        </div>
+        <Link className="text-foreground/80 hover:no-underline" href="/">
+          <div className="border sticky top-12 z-50 mt-2 mx-auto backdrop-blur border-foreground/20 backdrop-saturate-100 backdrop-contrast-125 p-1 px-2 w-fit rounded-full flex gap-1 items-center">
+            <Home className="animate-in" size={12} />
+            <span className="text-xs">Home</span>
+          </div>
+        </Link>
         <NRenderer recordMap={recordMap} />
         <section className="connect-section">
           <Connect />
