@@ -36,9 +36,7 @@ export default function Page() {
           <Projects />
         </section>
         <section className="stories-section">
-          {/* <SymetricGradProvider> */}
           <Stories />
-          {/* </SymetricGradProvider> */}
         </section>
         <section className="now-section">
           <Now />

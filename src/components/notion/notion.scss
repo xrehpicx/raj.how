@@ -27,10 +27,16 @@
     @apply hidden;
   }
   .notion-collection-card-cover {
-    @apply h-24;
+    @apply h-24 opacity-80 backdrop-saturate-150 brightness-125;
   }
   .notion-collection-card {
-    @apply rounded-sm opacity-90 backdrop-contrast-200 backdrop-brightness-150 backdrop-saturate-200;
+    @apply rounded shadow bg-transparent backdrop-contrast-125 backdrop-saturate-200;
+  }
+  .notion-page-icon-span {
+    @apply flex items-center justify-center;
+  }
+  .notion-page-title-icon {
+    @apply w-4 h-4;
   }
   .notion-gallery-grid {
     @apply border-none pt-0;
