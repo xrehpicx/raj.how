@@ -46,6 +46,12 @@
   }
 }
 
+.notion-text {
+  img {
+    @apply inline;
+  }
+}
+
 .notion-bookmark {
   @apply rounded-lg border md:flex-row flex-col-reverse;
 
