@@ -6,13 +6,8 @@ import "@/components/notion/notion.scss";
 import "react-notion-x/src/styles.css";
 import "prismjs/themes/prism-tomorrow.css";
 
-import {
-  BackgroundGradentProvider,
-  GradientProvider,
-  SymetricGradProvider,
-} from "@/components/gradient-provider";
+import { BackgroundGradentProvider } from "@/components/gradient-provider";
 import GrainProvider from "@/components/grain";
-import { cn } from "@/lib/utils";
 import { Footer } from "../Footer";
 import { Connect } from "../Connect";
 import { Home } from "lucide-react";
