@@ -98,7 +98,8 @@ function Projects() {
         <h3 className="font-display font-medium">Favorite Projects</h3>
         <p className="text-xs italic text-foreground/80">
           You can check out all of them on my{" "}
-          <a href="https://github.com/xrehpicx">github.</a>
+          <a href="https://git.raj.how/raj">git</a> or if thats down check out
+          my <a href="https://github.com/xrehpicx">github.</a>
         </p>
       </div>
 
