@@ -5,7 +5,7 @@ import {
 } from "@/components/gradient-provider";
 import GrainProvider from "@/components/grain";
 import { StyledNotion } from "@/components/notion/styled";
-import { ExternalLink } from "lucide-react";
+import { ExternalLink, Sparkle } from "lucide-react";
 import { Footer } from "./Footer";
 import { Connect } from "./Connect";
 
@@ -23,7 +23,12 @@ export default function Page() {
             grainHeight: 1,
           }}
         />
-        <header className="my-2">
+        <header className="my-2 mt-8 relative">
+          <Sparkle
+            strokeWidth={1.5}
+            size={32}
+            className="absolute -left-6 -top-5"
+          />
           <h1 className="text-xl font-display animate-in font-medium">./raj</h1>
         </header>
         <div className="">
