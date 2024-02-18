@@ -68,12 +68,6 @@ function Now() {
           Building Tools <a href="https://phonepe.com">@PhonePe</a> to manage
           thousands of servers and their network.
         </p>
-        <p className="mt-4">
-          Trying out design system inspired by{" "}
-          <a href="https://paco.me/">@paco</a> &{" "}
-          <a href="https://rauno.me/projects">@runo</a>
-          {"'s"} designs.
-        </p>
       </div>
     </div>
   );
