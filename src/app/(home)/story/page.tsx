@@ -1,4 +1,3 @@
-import { NRenderer } from "@/components/notion/renderer";
 import { NotionAPI } from "notion-client";
 import Image from "next/image";
 import { getPageImageUrls, getPageTitle } from "notion-utils";
@@ -12,6 +11,9 @@ import { Footer } from "../Footer";
 import { Connect } from "../Connect";
 import { Home } from "lucide-react";
 import Link from "next/link";
+import dynamic from "next/dynamic";
+
+import { NRenderer } from "@/components/notion/renderer";
 
 export default async function Story({
   searchParams,
@@ -46,6 +48,7 @@ export default async function Story({
         height={300}
         src={images[0]}
         alt={title}
+        priority
         className="w-full h-48 object-cover opacity-70 backdrop-saturate-200 backdrop-contrast-200 -z-50"
       />
       <div className="container py-12 max-w-2xl">

@@ -4,7 +4,6 @@ import { StyledNotion } from "@/components/notion/styled";
 import { ExternalLink, Sparkle } from "lucide-react";
 import { Footer } from "./Footer";
 import { Connect } from "./Connect";
-import { motion } from "framer-motion";
 
 export default function Page() {
   return (
