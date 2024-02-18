@@ -60,9 +60,10 @@ export function BackgroundGradentProvider({
       )}
     >
       <motion.div
+        // blur and fade in
+        initial={{ opacity: 0, filter: "blur(10px)" }}
+        animate={{ opacity: 1, filter: "blur(0px)" }}
         className="w-full h-full"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
       >
         <Image
           className="w-full h-full object-cover"

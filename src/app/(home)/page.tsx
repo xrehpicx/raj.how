@@ -1,13 +1,10 @@
-import {
-  BackgroundGradentProvider,
-  GradientProvider,
-  SymetricGradProvider,
-} from "@/components/gradient-provider";
+import { BackgroundGradentProvider } from "@/components/gradient-provider";
 import GrainProvider from "@/components/grain";
 import { StyledNotion } from "@/components/notion/styled";
 import { ExternalLink, Sparkle } from "lucide-react";
 import { Footer } from "./Footer";
 import { Connect } from "./Connect";
+import { motion } from "framer-motion";
 
 export default function Page() {
   return (
@@ -91,7 +88,7 @@ function Stories() {
           My tech blogs and other writings.
         </p>
       </div>
-      <StyledNotion blockId="d149cfb269aa4a5699bbf919a1b0b137" />
+      <StyledNotion className="" blockId="d149cfb269aa4a5699bbf919a1b0b137" />
     </div>
   );
 }

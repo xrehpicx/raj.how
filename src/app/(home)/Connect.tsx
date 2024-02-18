@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { nanoid, customAlphabet } from "nanoid";
+import { customAlphabet } from "nanoid";
 
 const generate = customAlphabet("abcdefghijklmnopqrstuvwxyz", 9);
 
@@ -37,7 +37,10 @@ export function Connect() {
             className="flex items-center text-primary justify-center"
             href={`mailto:${random_id}@raj.how`}
           >
-            <span className="w-[68px] overflow-hidden font-mono tabular-nums text-right">
+            <span
+              suppressHydrationWarning
+              className="w-[68px] overflow-hidden font-mono tabular-nums text-right"
+            >
               {random_id}
             </span>
             <span>@raj.how</span>

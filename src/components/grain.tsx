@@ -1,5 +1,6 @@
 "use client";
 
+import { motion } from "framer-motion";
 import React, { useEffect, useRef, useCallback } from "react";
 
 type GrainOptions = {
@@ -81,7 +82,10 @@ export const GrainProvider = ({
   }, [animate]);
 
   return (
-    <canvas
+    <motion.canvas
+      initial={{ opacity: 0, filter: "blur(10px)" }}
+      animate={{ opacity: 1, filter: "blur(0px)" }}
+      transition={{ duration: 2 }}
       ref={canvasRef}
       id="grained-canvas"
       className="fixed left-0 top-0 inset-0 z-50 pointer-events-none w-full h-full"

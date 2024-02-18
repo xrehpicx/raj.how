@@ -27,7 +27,12 @@ const Clock: React.FC = () => {
   const seconds = time.getSeconds();
 
   return (
-    <svg width="18px" height="18px" viewBox="0 0 100 100">
+    <svg
+      suppressHydrationWarning
+      width="18px"
+      height="18px"
+      viewBox="0 0 100 100"
+    >
       <circle
         cx="50"
         cy="50"
@@ -41,6 +46,7 @@ const Clock: React.FC = () => {
         y1="50"
         x2="50"
         y2="20"
+        suppressHydrationWarning
         transform={calculateRotation(hours, true)}
         stroke="black"
         strokeWidth="4"
@@ -50,6 +56,7 @@ const Clock: React.FC = () => {
         y1="50"
         x2="50"
         y2="15"
+        suppressHydrationWarning
         transform={calculateRotation(minutes)}
         stroke="black"
         strokeWidth="4"
@@ -59,6 +66,7 @@ const Clock: React.FC = () => {
         y1="50"
         x2="50"
         y2="10"
+        suppressHydrationWarning
         transform={calculateRotation(seconds)}
         stroke="black"
         strokeWidth="2"

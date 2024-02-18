@@ -3,6 +3,8 @@ import { type ExtendedRecordMap } from "notion-types";
 import dynamic from "next/dynamic";
 
 import { NotionRenderer } from "react-notion-x";
+import { motion } from "framer-motion";
+import { cn } from "@/lib/utils";
 
 const Code = dynamic(() =>
   import("react-notion-x/build/third-party/code").then((m) => m.Code),
@@ -33,7 +35,12 @@ export function NRenderer({
   fullPage?: boolean;
 }) {
   return (
-    <div className={className}>
+    <motion.div
+      // blur and fade in and animate height to auto
+      initial={{ opacity: 0, filter: "blur(10px)" }}
+      animate={{ opacity: 1, filter: "blur(0px)" }}
+      className={cn("", className)}
+    >
       <NotionRenderer
         components={{
           Code,
@@ -45,6 +52,6 @@ export function NRenderer({
         fullPage={fullPage}
         recordMap={recordMap}
       />
-    </div>
+    </motion.div>
   );
 }
