@@ -63,9 +63,11 @@ export function BackgroundGradentProvider({
         // blur and fade in
         initial={{ opacity: 0, filter: "blur(10px)" }}
         animate={{ opacity: 1, filter: "blur(0px)" }}
+        transition={{ delay: 0.6 }}
         className="w-full h-full"
       >
         <Image
+          width={1200}
           className="w-full h-full object-cover"
           src={background_gradient}
           alt="gradient"
