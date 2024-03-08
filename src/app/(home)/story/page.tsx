@@ -11,9 +11,37 @@ import { Footer } from "../Footer";
 import { Connect } from "../Connect";
 import { Home } from "lucide-react";
 import Link from "next/link";
-import dynamic from "next/dynamic";
 
 import { NRenderer } from "@/components/notion/renderer";
+import { Metadata, ResolvingMetadata } from "next";
+
+export const revalidate = 100;
+
+type Props = {
+  searchParams: { id?: string };
+};
+
+export async function generateMetadata(
+  { searchParams }: Props,
+  parent: ResolvingMetadata,
+): Promise<Metadata> {
+  const notion = new NotionAPI();
+
+  const recordMap = await notion.getPage(searchParams.id!);
+
+  const title = getPageTitle(recordMap);
+
+  const images = getPageImageUrls(recordMap, { mapImageUrl: (url) => url });
+
+  const previousImages = (await parent).openGraph?.images || [];
+
+  return {
+    title: title,
+    openGraph: {
+      images: [...images, ...previousImages],
+    },
+  };
+}
 
 export default async function Story({
   searchParams,

@@ -45,7 +45,8 @@ export function NRenderer({
 
   useEffect(() => {
     setRender(true);
-  }, []);
+    console.log(recordMap);
+  }, [recordMap]);
 
   if (!render) {
     return (
