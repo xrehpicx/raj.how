@@ -37,7 +37,11 @@ export async function generateMetadata(
 
   return {
     title: title,
+    description: "Written by raj",
     openGraph: {
+      images: [...images, ...previousImages],
+    },
+    twitter: {
       images: [...images, ...previousImages],
     },
   };

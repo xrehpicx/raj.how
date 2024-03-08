@@ -1,8 +1,7 @@
 import { MetadataRoute } from "next";
 import { NotionAPI } from "notion-client";
 import { ExtendedRecordMap } from "notion-types";
-import { getAllPagesInSpace } from "notion-utils";
-import { getPreviewImageMap } from "./preview-images";
+import { getAllPagesInSpace, getPageImageUrls } from "notion-utils";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const pages = await getAllPagesInSpace(
@@ -27,7 +26,12 @@ async function getPage(pageId: string): Promise<ExtendedRecordMap> {
   const notion = new NotionAPI();
   const recordMap = await notion.getPage(pageId);
 
-  const previewImageMap = await getPreviewImageMap(recordMap);
+  const previewImageMap = getPageImageUrls(recordMap, {
+    mapImageUrl(url) {
+      return url;
+    },
+  });
+
   (recordMap as any).preview_images = previewImageMap;
 
   return recordMap;
