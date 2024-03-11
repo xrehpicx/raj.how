@@ -22,12 +22,10 @@ export async function StyledNotion({
   const recordMap = await notion.getPage(blockId);
 
   return (
-    <>
-      <NRenderer
-        fullPage={fullPage}
-        className={className}
-        recordMap={recordMap}
-      />
-    </>
+    <NRenderer
+      fullPage={fullPage}
+      className={className}
+      recordMap={recordMap}
+    />
   );
 }

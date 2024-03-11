@@ -1,6 +1,7 @@
 import { NotionAPI } from "notion-client";
 import Image from "next/image";
 import { getPageImageUrls, getPageTitle } from "notion-utils";
+
 import "@/components/notion/notion.scss";
 import "react-notion-x/src/styles.css";
 import "prismjs/themes/prism-tomorrow.css";

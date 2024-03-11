@@ -16,6 +16,9 @@
   .notion-column {
     @apply overflow-hidden;
   }
+  .notion-inline-code {
+    @apply text-primary bg-background/20 border backdrop-saturate-200 backdrop-brightness-150 backdrop-blur-sm border-primary/40 rounded px-1;
+  }
 }
 
 .notion-collection-header-title {
@@ -52,8 +55,12 @@
   }
 }
 
+.notion-external,
 .notion-bookmark {
-  @apply rounded-lg border md:flex-row flex-col-reverse;
+  @apply bg-background/10 border rounded-lg hover:no-underline backdrop-brightness-150 backdrop-contrast-150 backdrop-saturate-150 backdrop-blur-sm;
+}
+.notion-bookmark {
+  // @apply rounded-lg border md:flex-row flex-col-reverse bg-background/10 border-primary/40 hover:no-underline;
 
   & > div:first-child {
     @apply flex-none md:flex-1 md:basis-36;
