@@ -21,33 +21,33 @@ export async function GET(props: NextRequest) {
     (
       <div tw="flex flex-col font-sans border-red-400 m-0 w-full h-full bg-black text-white">
         <img
-          width={1200}
-          height={630}
+          width={1200 / 2}
+          height={630 / 2}
           tw="absolute top-0 left-0"
           src={`${image_origin_url}/background-gradient.png`}
           alt="og"
         />
-        <div tw="p-8 bg-white/20 flex flex-col">
-          <span tw="text-black text-6xl font-bold font-sans">
+        <div tw="p-3 px-4 bg-white/20 flex flex-col">
+          <span tw="text-black text-3xl font-bold font-sans">
             {title?.toString()}
           </span>
-          <span tw="text-black/80 text-3xl">{description?.toString()}</span>
-          <div tw="flex mt-2 items-center rounded-full w-fit mr-auto bg-background/30">
+          <span tw="text-black/80 text-xl">{description?.toString()}</span>
+          <div tw="flex mt-1 items-center rounded-full w-fit mr-auto bg-background/30">
             <img
               width="24"
               height="24"
               src={`https://github.com/${github}.png`}
-              tw="rounded-full mr-2"
+              tw="rounded-full mr-1"
             />
 
-            <span tw="text-black/80 font-thin text-2xl">
+            <span tw="text-black/80 font-thin text-xl">
               {author?.toString()}
             </span>
           </div>
         </div>
         {images ? (
           <img
-            width={1200}
+            width={1200 / 2}
             tw="flex-1"
             style={{
               objectFit: "cover",
@@ -60,8 +60,8 @@ export async function GET(props: NextRequest) {
       </div>
     ),
     {
-      width: 1200,
-      height: 630,
+      width: 1200 / 2,
+      height: 630 / 2,
     },
   );
 }
