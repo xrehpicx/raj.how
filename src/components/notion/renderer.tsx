@@ -15,9 +15,9 @@ import { materialOceanic } from "react-syntax-highlighter/dist/esm/styles/prism"
 
 // import Highlight from "react-highlight";
 
-const Code = dynamic(() => import("react-highlight").then((m) => m.default), {
-  ssr: false,
-});
+// const Code = dynamic(() => import("react-highlight").then((m) => m.default), {
+//   ssr: false,
+// });
 
 const Collection = dynamic(() =>
   import("react-notion-x/build/third-party/collection").then(

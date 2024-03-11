@@ -1,6 +1,6 @@
 import { NotionAPI } from "notion-client";
 import Image from "next/image";
-import { getPageImageUrls, getPageTitle } from "notion-utils";
+import { getPageImageUrls, getPageProperty, getPageTitle } from "notion-utils";
 
 import "@/components/notion/notion.scss";
 import "react-notion-x/src/styles.css";
@@ -31,19 +31,39 @@ export async function generateMetadata(
   const recordMap = await notion.getPage(searchParams.id!);
 
   const title = getPageTitle(recordMap);
-
+  const page_block = Object.values(recordMap.block)[0].value;
+  const description = getPageProperty("description", page_block, recordMap);
+  const author = getPageProperty("author", page_block, recordMap);
+  const github_username = getPageProperty("github", page_block, recordMap);
   const images = getPageImageUrls(recordMap, { mapImageUrl: (url) => url });
 
-  const previousImages = (await parent).openGraph?.images || [];
+  console.log("desc", description);
+
+  const params = new URLSearchParams({
+    title: title.toString(),
+    description: description.toString(),
+    author: author.toString(),
+    images: images.join(","),
+    github_username: github_username.toString(),
+  });
+
+  const image_origin_url =
+    process.env.NODE_ENV !== "development"
+      ? "https://raj.how"
+      : "http://localhost:3000";
+
+  const og_image_url = new URL("/api/og", image_origin_url);
+
+  og_image_url.search = params.toString();
 
   return {
     title: title,
     description: "Written by raj",
     openGraph: {
-      images: [...images, ...previousImages],
+      images: [og_image_url.toString()],
     },
     twitter: {
-      images: [...images, ...previousImages],
+      images: [og_image_url.toString()],
     },
   };
 }
