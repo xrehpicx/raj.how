@@ -62,19 +62,17 @@
 }
 .notion-external,
 .notion-bookmark {
-  @apply bg-background/10 border brightness-100 rounded-lg hover:no-underline backdrop-contrast-150 backdrop-saturate-100 backdrop-blur-sm;
+  @apply bg-background/10 border brightness-100 rounded-lg hover:no-underline backdrop-contrast-150 backdrop-saturate-100 backdrop-blur-sm flex flex-col-reverse md:flex-row;
 }
 .notion-bookmark {
-  // @apply rounded-lg border md:flex-row flex-col-reverse bg-background/10 border-primary/40 hover:no-underline;
-
   & > div:first-child {
-    @apply flex-none md:flex-1 md:basis-36;
+    // @apply bg-red-300;
   }
   .notion-bookmark-title {
-    @apply font-display font-bold text-lg;
+    @apply font-display font-bold text-wrap whitespace-pre-wrap text-lg;
   }
   .notion-bookmark-link {
-    @apply opacity-60;
+    @apply opacity-80;
   }
   .notion-bookmark-image {
     @apply block;
