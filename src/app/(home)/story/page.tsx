@@ -16,7 +16,6 @@ import Link from "next/link";
 import { NRenderer } from "@/components/notion/renderer";
 import { Metadata, ResolvingMetadata } from "next";
 import Comments, { Reactions } from "@/components/comments";
-import { Stats } from "./stats";
 
 export const revalidate = 100;
 
@@ -26,7 +25,7 @@ type Props = {
 
 export async function generateMetadata(
   { searchParams }: Props,
-  parent: ResolvingMetadata,
+  // parent: ResolvingMetadata,
 ): Promise<Metadata> {
   const notion = new NotionAPI();
 
@@ -60,10 +59,36 @@ export async function generateMetadata(
     title: title,
     description: description.toString() || "Written by raj",
     openGraph: {
-      images: [og_image_url.toString()],
+      images: [
+        {
+          url: og_image_url.toString(),
+          type: "image/jpeg",
+          height: 630,
+          width: 1200,
+        },
+      ],
+      authors: [author.toString()],
     },
+    authors: [
+      {
+        name: author.toString(),
+      },
+    ],
+
     twitter: {
-      images: [og_image_url.toString()],
+      images: [
+        {
+          url: og_image_url.toString(),
+          type: "image/jpeg",
+          height: 630,
+          width: 1200,
+        },
+      ],
+      creator: author.toString(),
+      card: "summary_large_image",
+      title: title,
+      description: description.toString() || "Written by raj",
+      site: "raj.how",
     },
   };
 }
@@ -87,8 +112,6 @@ export default async function Story({
   const repoId = process.env.COMMENTS_REPO_ID;
   const category = process.env.COMMENTS_CATEGORY;
   const categoryId = process.env.COMMENTS_CATEGORY_ID;
-
-  console.log(repo, repoId, category, categoryId);
 
   return (
     <article suppressHydrationWarning className="relative">

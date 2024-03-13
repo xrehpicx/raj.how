@@ -3,6 +3,11 @@ import { NextRequest } from "next/server";
 
 export const runtime = "edge";
 
+export const contentType = "image/jpeg";
+
+const width = 1200 / 2;
+const height = 630 / 2;
+
 export async function GET(props: NextRequest) {
   const url = new URL(props.url);
 
@@ -21,13 +26,13 @@ export async function GET(props: NextRequest) {
     (
       <div tw="flex flex-col font-sans border-red-400 m-0 w-full h-full bg-black text-white">
         <img
-          width={1200 / 2}
-          height={630 / 2}
+          width={width}
+          height={height}
           tw="absolute top-0 left-0"
           src={`${image_origin_url}/background-gradient.png`}
           alt="og"
         />
-        <div tw="p-3 px-4 bg-white/20 flex flex-col">
+        <div tw="p-3 px-6 bg-white/20 flex flex-1 justify-center flex-col">
           <span tw="text-black text-3xl font-bold font-sans">
             {title?.toString()}
           </span>
@@ -45,9 +50,9 @@ export async function GET(props: NextRequest) {
             </span>
           </div>
         </div>
-        {images ? (
+        {images && images?.split(",")[0].trim() ? (
           <img
-            width={1200 / 2}
+            width={width}
             tw="flex-1"
             style={{
               objectFit: "cover",
@@ -60,8 +65,12 @@ export async function GET(props: NextRequest) {
       </div>
     ),
     {
-      width: 1200 / 2,
-      height: 630 / 2,
+      width,
+      height,
+      headers: {
+        "Content-Type": "image/jpeg",
+        "content-type": "image/jpeg",
+      },
     },
   );
 }
