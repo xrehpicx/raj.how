@@ -54,10 +54,15 @@
     @apply inline;
   }
 }
-
+.notion-asset-wrapper {
+  @apply z-50 brightness-110;
+  img {
+    @apply rounded-md;
+  }
+}
 .notion-external,
 .notion-bookmark {
-  @apply bg-background/10 border rounded-lg hover:no-underline backdrop-brightness-150 backdrop-contrast-150 backdrop-saturate-150 backdrop-blur-sm;
+  @apply bg-background/10 border brightness-100 rounded-lg hover:no-underline backdrop-contrast-150 backdrop-saturate-100 backdrop-blur-sm;
 }
 .notion-bookmark {
   // @apply rounded-lg border md:flex-row flex-col-reverse bg-background/10 border-primary/40 hover:no-underline;
