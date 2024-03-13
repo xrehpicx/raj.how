@@ -15,6 +15,7 @@ import Link from "next/link";
 
 import { NRenderer } from "@/components/notion/renderer";
 import { Metadata, ResolvingMetadata } from "next";
+import Comments from "@/components/comments";
 
 export const revalidate = 100;
 
@@ -81,6 +82,13 @@ export default async function Story({
 
   const images = getPageImageUrls(recordMap, { mapImageUrl: (url) => url });
 
+  const repo = process.env.COMMENTS_REPO;
+  const repoId = process.env.COMMENTS_REPO_ID;
+  const category = process.env.COMMENTS_CATEGORY;
+  const categoryId = process.env.COMMENTS_CATEGORY_ID;
+
+  console.log(repo, repoId, category, categoryId);
+
   return (
     <article suppressHydrationWarning className="relative">
       <GrainProvider
@@ -115,6 +123,17 @@ export default async function Story({
         <NRenderer recordMap={recordMap} />
         <section className="connect-section">
           <Connect />
+        </section>
+
+        <section className="comments-section">
+          {repo && repoId && category && categoryId ? (
+            <Comments
+              repo={repo as `${string}/${string}`}
+              repoId={repoId}
+              category={category}
+              categoryId={categoryId}
+            />
+          ) : null}
         </section>
       </div>
 
