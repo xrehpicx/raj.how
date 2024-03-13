@@ -37,8 +37,6 @@ export async function generateMetadata(
   const github_username = getPageProperty("github", page_block, recordMap);
   const images = getPageImageUrls(recordMap, { mapImageUrl: (url) => url });
 
-  console.log("desc", description);
-
   const params = new URLSearchParams({
     title: title.toString(),
     description: description.toString(),

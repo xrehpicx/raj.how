@@ -32,7 +32,7 @@ export async function GET(props: NextRequest) {
             {title?.toString()}
           </span>
           <span tw="text-black/80 text-xl">{description?.toString()}</span>
-          <div tw="flex mt-1 items-center rounded-full w-fit mr-auto bg-background/30">
+          <div tw="flex mt-1 items-center rounded-full mr-auto">
             <img
               width="24"
               height="24"
