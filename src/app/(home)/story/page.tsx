@@ -15,7 +15,8 @@ import Link from "next/link";
 
 import { NRenderer } from "@/components/notion/renderer";
 import { Metadata, ResolvingMetadata } from "next";
-import Comments from "@/components/comments";
+import Comments, { Reactions } from "@/components/comments";
+import { Stats } from "./stats";
 
 export const revalidate = 100;
 
@@ -115,6 +116,20 @@ export default async function Story({
           {title}
         </h1>
 
+        <section
+          id="comments"
+          className="comments-section h-[58px] my-2 overflow-hidden"
+        >
+          {repo && repoId && category && categoryId ? (
+            <Reactions
+              repo={repo as `${string}/${string}`}
+              repoId={repoId}
+              category={category}
+              categoryId={categoryId}
+            />
+          ) : null}
+        </section>
+
         <div className="text-foreground/80 flex gap-1 hover:no-underline sticky top-12 z-50 mt-2 mx-auto w-fit">
           <Link href="/">
             <div className="backdrop-blur border border-foreground/20 backdrop-saturate-100 bg-background/60 backdrop-contrast-125 p-1 px-2 w-fit rounded-full flex gap-1 items-center">
@@ -135,7 +150,7 @@ export default async function Story({
           <Connect />
         </section>
 
-        <section id="comments" className="comments-section">
+        <section id="comments" className="comments-section pt-4">
           {repo && repoId && category && categoryId ? (
             <Comments
               repo={repo as `${string}/${string}`}
