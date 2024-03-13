@@ -116,10 +116,7 @@ export default async function Story({
           {title}
         </h1>
 
-        <section
-          id="comments"
-          className="comments-section h-[58px] my-2 overflow-hidden"
-        >
+        <section className="comments-section h-[58px] my-2 overflow-hidden">
           {repo && repoId && category && categoryId ? (
             <Reactions
               repo={repo as `${string}/${string}`}
