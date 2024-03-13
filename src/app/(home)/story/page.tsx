@@ -41,7 +41,7 @@ export async function generateMetadata(
     title: title.toString(),
     description: description.toString(),
     author: author.toString(),
-    images: images.join(","),
+    images: images[0],
     github_username: github_username.toString(),
   });
 
