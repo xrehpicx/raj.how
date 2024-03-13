@@ -5,6 +5,8 @@ import { ExternalLink, Sparkle } from "lucide-react";
 import { Footer } from "./Footer";
 import { Connect } from "./Connect";
 
+export const revalidate = 100;
+
 export default function Page() {
   return (
     <main>
