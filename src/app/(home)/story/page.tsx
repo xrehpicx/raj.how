@@ -10,7 +10,7 @@ import { BackgroundGradentProvider } from "@/components/gradient-provider";
 import GrainProvider from "@/components/grain";
 import { Footer } from "../Footer";
 import { Connect } from "../Connect";
-import { Home } from "lucide-react";
+import { Home, MessageCircleIcon } from "lucide-react";
 import Link from "next/link";
 
 import { NRenderer } from "@/components/notion/renderer";
@@ -114,18 +114,28 @@ export default async function Story({
         <h1 className="text-2xl text-center text-pretty font-medium">
           {title}
         </h1>
-        <Link className="text-foreground/80 hover:no-underline" href="/">
-          <div className="border sticky top-12 z-50 mt-2 mx-auto backdrop-blur border-foreground/20 backdrop-saturate-100 backdrop-contrast-125 p-1 px-2 w-fit rounded-full flex gap-1 items-center">
-            <Home className="animate-in" size={12} />
-            <span className="text-xs">Home</span>
-          </div>
-        </Link>
+
+        <div className="text-foreground/80 flex gap-1 hover:no-underline sticky top-12 z-50 mt-2 mx-auto w-fit">
+          <Link href="/">
+            <div className="backdrop-blur border border-foreground/20 backdrop-saturate-100 bg-background/60 backdrop-contrast-125 p-1 px-2 w-fit rounded-full flex gap-1 items-center">
+              <Home className="animate-in" size={12} />
+              <span className="text-xs">Home</span>
+            </div>
+          </Link>
+          <a href="#comments">
+            <div className="backdrop-blur border border-foreground/20 bg-background/60 backdrop-saturate-100 backdrop-contrast-125 p-1 px-2 w-fit rounded-full flex gap-1 items-center">
+              <MessageCircleIcon className="animate-in" size={12} />
+              <span className="text-xs">Comments</span>
+            </div>
+          </a>
+        </div>
+
         <NRenderer recordMap={recordMap} />
         <section className="connect-section">
           <Connect />
         </section>
 
-        <section className="comments-section">
+        <section id="comments" className="comments-section">
           {repo && repoId && category && categoryId ? (
             <Comments
               repo={repo as `${string}/${string}`}
