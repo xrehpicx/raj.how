@@ -108,6 +108,12 @@ export default async function Story({
 
   const images = getPageImageUrls(recordMap, { mapImageUrl: (url) => url });
 
+  const description = getPageProperty(
+    "description",
+    Object.values(recordMap.block)[0].value,
+    recordMap,
+  );
+
   const repo = process.env.COMMENTS_REPO;
   const repoId = process.env.COMMENTS_REPO_ID;
   const category = process.env.COMMENTS_CATEGORY;
@@ -138,6 +144,9 @@ export default async function Story({
         <h1 className="text-2xl text-center text-pretty font-medium">
           {title}
         </h1>
+        <p className="text-xs italic text-center text-muted-foreground">
+          {description}
+        </p>
 
         <section className="comments-section h-[58px] my-2 overflow-hidden">
           {repo && repoId && category && categoryId ? (
