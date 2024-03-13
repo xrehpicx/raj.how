@@ -58,7 +58,7 @@ export async function generateMetadata(
 
   return {
     title: title,
-    description: "Written by raj",
+    description: description.toString() || "Written by raj",
     openGraph: {
       images: [og_image_url.toString()],
     },
