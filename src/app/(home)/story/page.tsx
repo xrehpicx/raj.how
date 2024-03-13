@@ -121,16 +121,24 @@ export default async function Story({
 
   return (
     <article suppressHydrationWarning className="relative">
-      <GrainProvider
-        grain_options={{
-          patternWidth: 200,
-          patternHeight: 200,
-          grainOpacity: 0.1,
-          grainDensity: 1,
-          grainWidth: 1,
-          grainHeight: 1,
+      {/* <GrainProvider */}
+      {/*   grain_options={{ */}
+      {/*     patternWidth: 200, */}
+      {/*     patternHeight: 200, */}
+      {/*     grainOpacity: 0.1, */}
+      {/*     grainDensity: 1, */}
+      {/*     grainWidth: 1, */}
+      {/*     grainHeight: 1, */}
+      {/*   }} */}
+      {/* /> */}
+
+      <div
+        className="absolute z-10 top-0 left-0 w-full h-full bg-transparent bg-repeat round pointer-events-none opacity-15"
+        style={{
+          backgroundImage:
+            "url('data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 600 600%22%3E%3Cfilter id=%22a%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%22.65%22 numOctaves=%223%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23a)%22/%3E%3C/svg%3E')",
         }}
-      />
+      ></div>
       <BackgroundGradentProvider className="-z-10 h-screen w-full opacity-60" />
       <Image
         width={400}
