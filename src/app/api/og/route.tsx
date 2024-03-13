@@ -3,7 +3,7 @@ import { NextRequest } from "next/server";
 
 export const runtime = "edge";
 
-export const contentType = "image/jpeg";
+// export const contentType = "image/jpeg";
 
 const width = 1200 / 2;
 const height = 630 / 2;
