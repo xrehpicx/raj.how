@@ -7,7 +7,6 @@ import "react-notion-x/src/styles.css";
 import "prismjs/themes/prism-tomorrow.css";
 
 import { BackgroundGradentProvider } from "@/components/gradient-provider";
-import GrainProvider from "@/components/grain";
 import { Footer } from "../Footer";
 import { Connect } from "../Connect";
 import { Home, MessageCircleIcon } from "lucide-react";
@@ -76,14 +75,7 @@ export async function generateMetadata(
     ],
 
     twitter: {
-      images: [
-        {
-          url: og_image_url.toString(),
-          type: "image/jpeg",
-          height: 630,
-          width: 1200,
-        },
-      ],
+      images: [og_image_url.toString()],
       creator: author.toString(),
       card: "summary_large_image",
       title: title,
@@ -182,7 +174,10 @@ export default async function Story({
           </a>
         </div>
 
-        <NRenderer recordMap={recordMap} />
+        <div className="mt-2">
+          <NRenderer recordMap={recordMap} />
+        </div>
+
         <section className="connect-section">
           <Connect />
         </section>
