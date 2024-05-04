@@ -16,16 +16,17 @@ export default function Page() {
   return (
     <main>
       <div className="container py-12 max-w-xl">
-        <GrainProvider
-          grain_options={{
-            patternWidth: 200,
-            patternHeight: 200,
-            grainOpacity: 0.1,
-            grainDensity: 1,
-            grainWidth: 1,
-            grainHeight: 1,
-          }}
-        />
+        <div className="hero fixed top-0 left-0 w-full h-screen"></div>
+        {/* <GrainProvider */}
+        {/*   grain_options={{ */}
+        {/*     patternWidth: 200, */}
+        {/*     patternHeight: 200, */}
+        {/*     grainOpacity: 0.1, */}
+        {/*     grainDensity: 1, */}
+        {/*     grainWidth: 1, */}
+        {/*     grainHeight: 1, */}
+        {/*   }} */}
+        {/* /> */}
         <header className="my-2 mt-8 relative">
           <Sparkle
             strokeWidth={1.5}

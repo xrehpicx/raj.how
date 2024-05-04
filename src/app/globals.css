@@ -78,3 +78,68 @@
 a {
   @apply text-primary font-medium hover:underline underline-offset-2;
 }
+
+.overlay {
+  /* position: absolute; */
+  /* width: 100vw; */
+  /* height: 100vh; */
+  /* background-image: linear-gradient(transparent, rgba(0, 0, 0, 0.5)); */
+  /* z-index: 1; */
+}
+.hero {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+  /* background-image: url("https://i.picsum.photos/id/100/2500/1656.jpg?hmac=gWyN-7ZB32rkAjMhKXQgdHOIBRHyTSgzuOK6U0vXb1w"); */
+  background-position: center;
+}
+
+.hero:after {
+  content: "";
+  background-image: url("/grain.png");
+  height: 300%;
+  width: 300%;
+  position: fixed;
+  opacity: 0.08;
+  animation: animateGrain 8s steps(10) infinite;
+}
+
+@keyframes animateGrain {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  10% {
+    transform: translate(-5%, -10%);
+  }
+  20% {
+    transform: translate(-15%, -20%);
+  }
+  30% {
+    transform: translate(-5%, -10%);
+  }
+  40% {
+    transform: translate(-15%, -20%);
+  }
+
+  50% {
+    transform: translate(-5%, -10%);
+  }
+  60% {
+    transform: translate(-15%, -20%);
+  }
+  70% {
+    transform: translate(-5%, -10%);
+  }
+  80% {
+    transform: translate(-15%, -20%);
+  }
+  90% {
+    transform: translate(-5%, -10%);
+  }
+  100% {
+    transform: translate(-15%, -20%);
+  }
+}
