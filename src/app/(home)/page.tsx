@@ -178,7 +178,9 @@ function Project({
         {contribution ? (
           <Tooltip>
             <TooltipTrigger className="flex ml-1 gap-1 items-center">
-              <span className="text-xs opacity-70 italic">Contribution</span>
+              <span className="text-xs opacity-70 italic">
+                OSS Contribution
+              </span>
               <InfoIcon size={12} />
             </TooltipTrigger>
 
