@@ -16,7 +16,7 @@ export default function Page() {
   return (
     <main>
       <div className="container py-12 max-w-xl">
-        <div className="hero fixed top-0 left-0 w-full h-screen"></div>
+        <div className="hero pointer-events-none fixed top-0 left-0 w-full h-screen"></div>
         {/* <GrainProvider */}
         {/*   grain_options={{ */}
         {/*     patternWidth: 200, */}
