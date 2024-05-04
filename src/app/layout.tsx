@@ -4,6 +4,7 @@ import "./globals.css";
 import { cn } from "@/lib/utils";
 import { TopBlur } from "@/components/top-blur";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import { TooltipProvider } from "@/components/ui/tooltip";
 
 const inter = Inter({ subsets: ["latin"], variable: "--body-font" });
 const dm = DM_Sans({ subsets: ["latin"], variable: "--display-font" });
@@ -36,7 +37,7 @@ export default function RootLayout({
         className={cn(inter.className, inter.variable, dm.variable, "relative")}
       >
         <TopBlur />
-        {children}
+        <TooltipProvider>{children}</TooltipProvider>
       </body>
     </html>
   );

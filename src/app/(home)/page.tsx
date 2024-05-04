@@ -1,9 +1,14 @@
 import { BackgroundGradentProvider } from "@/components/gradient-provider";
 import GrainProvider from "@/components/grain";
 import { StyledNotion } from "@/components/notion/styled";
-import { ExternalLink, Sparkle } from "lucide-react";
+import { ExternalLink, InfoIcon, Sparkle } from "lucide-react";
 import { Footer } from "./Footer";
 import { Connect } from "./Connect";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 
 export const revalidate = 100;
 
@@ -170,7 +175,17 @@ function Project({
           </a>
         ) : null}
         {contribution ? (
-          <span className="text-xs opacity-70 italic">Contribution</span>
+          <Tooltip>
+            <TooltipTrigger className="flex ml-1 gap-1 items-center">
+              <span className="text-xs opacity-70 italic">Contribution</span>
+              <InfoIcon size={12} />
+            </TooltipTrigger>
+
+            <TooltipContent>
+              This is a contribution to an existing project. The project was not
+              started by me.
+            </TooltipContent>
+          </Tooltip>
         ) : null}
       </div>
       <p className="text-xs text-foreground/80 text-balance">{description}</p>
