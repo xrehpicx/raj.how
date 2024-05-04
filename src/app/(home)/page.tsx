@@ -11,16 +11,16 @@ export default function Page() {
   return (
     <main>
       <div className="container py-12 max-w-xl">
-        <GrainProvider
-          grain_options={{
-            patternWidth: 200,
-            patternHeight: 200,
-            grainOpacity: 0.1,
-            grainDensity: 1,
-            grainWidth: 1,
-            grainHeight: 1,
-          }}
-        />
+        {/* <GrainProvider */}
+        {/*   grain_options={{ */}
+        {/*     patternWidth: 200, */}
+        {/*     patternHeight: 200, */}
+        {/*     grainOpacity: 0.1, */}
+        {/*     grainDensity: 1, */}
+        {/*     grainWidth: 1, */}
+        {/*     grainHeight: 1, */}
+        {/*   }} */}
+        {/* /> */}
         <header className="my-2 mt-8 relative">
           <Sparkle
             strokeWidth={1.5}
@@ -102,6 +102,21 @@ function Projects() {
 
       <div className="sm:grid-cols-2 grid-cols-1 grid gap-2">
         <Project
+          title="PIOUS"
+          description={
+            "Custom Linux distribution for tracking and provisioning servers at scale."
+          }
+          href="https://tech.phonepe.com/heres-everything-you-need-to-know-about-phonepes-internal-cloud-provisioning-service/"
+        />
+        <Project
+          contribution
+          title="shadcn/ui"
+          description={
+            "Contributed to my Favorite UI library, shadcn/ui, with a single PR but it was fun."
+          }
+          href="https://ui.shadcn.com/"
+        />
+        <Project
           title="PPEC"
           description={
             "PhonePe’s internal cloud provisioning service with fine grain control over provisioning and network, I made the entire ux ui flow for this, very cool service"
@@ -138,10 +153,12 @@ function Project({
   title,
   description,
   href,
+  contribution,
 }: {
   title: string;
   description: JSX.Element | string;
   href?: string;
+  contribution?: boolean;
 }) {
   return (
     <div className="mt-4">
@@ -151,6 +168,9 @@ function Project({
           <a href={href} className="" target="_blank">
             <ExternalLink className="w-3" />
           </a>
+        ) : null}
+        {contribution ? (
+          <span className="text-xs opacity-70 italic">Contribution</span>
         ) : null}
       </div>
       <p className="text-xs text-foreground/80 text-balance">{description}</p>
