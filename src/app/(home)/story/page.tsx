@@ -15,6 +15,7 @@ import Link from "next/link";
 import { NRenderer } from "@/components/notion/renderer";
 import { Metadata, ResolvingMetadata } from "next";
 import Comments, { Reactions } from "@/components/comments";
+import { CssGrain } from "@/components/css-grain";
 
 export const revalidate = 100;
 
@@ -132,7 +133,7 @@ export default async function Story({
       {/*   }} */}
       {/* ></div> */}
 
-      <div className="hero fixed top-0 left-0 w-full h-screen"></div>
+      <CssGrain />
       <BackgroundGradentProvider className="-z-10 h-screen w-full opacity-60" />
       <Image
         width={400}
