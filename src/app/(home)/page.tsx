@@ -9,6 +9,8 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import { motion } from "framer-motion";
+import { CssGrain } from "@/components/css-grain";
 
 export const revalidate = 100;
 
@@ -16,7 +18,7 @@ export default function Page() {
   return (
     <main>
       <div className="container py-12 max-w-xl">
-        <div className="hero pointer-events-none fixed top-0 left-0 w-full h-screen"></div>
+        <CssGrain />
         {/* <GrainProvider */}
         {/*   grain_options={{ */}
         {/*     patternWidth: 200, */}
