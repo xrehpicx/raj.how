@@ -44,6 +44,9 @@ export default function Page() {
           </p>
         </div>
         <section>
+          <Dotfiles />
+        </section>
+        <section>
           <Projects />
         </section>
         <section className="stories-section">
@@ -82,6 +85,17 @@ function Now() {
   );
 }
 
+function Dotfiles() {
+  return (
+    <div className="mt-6 italic">
+      <Project
+        title="dotfiles"
+        description={"arch+hyprland config, some things can run on mac too."}
+        href="https://git.raj.how/raj/dotfiles.git"
+      />
+    </div>
+  );
+}
 function Stories() {
   return (
     <div className="mt-6">
