@@ -9,7 +9,7 @@ export function CssGrain() {
         opacity: 0,
       }}
       animate={{
-        opacity: 1,
+        opacity: 0.8,
       }}
       transition={{
         duration: 10,

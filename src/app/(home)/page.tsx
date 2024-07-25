@@ -9,10 +9,13 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 import { CssGrain } from "@/components/css-grain";
+import { CardContainer, CardItem } from "@/components/ui/3d-card";
+import { SparklesText } from "@/components/ui/sparkles-text";
+import { AuroraBackground } from "@/components/ui/aurora-background";
 
 export const revalidate = 100;
 
-export default function Page() {
+export default async function Page() {
   return (
     <main>
       <div className="container py-12 max-w-xl">
@@ -46,9 +49,10 @@ export default function Page() {
         <section className="connect-section">
           <Connect />
         </section>
-        <BackgroundGradentProvider className="h-screen -z-10 w-full opacity-60" />
       </div>
       <Footer />
+      <AuroraBackground className="fixed h-screen w-screen -z-10 left-0 top-0" />
+      <BackgroundGradentProvider className="h-screen -z-10 w-full opacity-30" />
     </main>
   );
 }
@@ -77,6 +81,7 @@ function Dotfiles() {
   return (
     <div className="mt-6 italic">
       <Project
+        sparkle
         title="dotfiles"
         description={"arch+hyprland config, some things can run on mac too."}
         href="https://git.raj.how/raj/dotfiles.git"
@@ -93,12 +98,42 @@ function Stories() {
           My tech blogs and other writings.
         </p>
       </div>
+      <MainStory />
       <StyledNotion className="" blockId="d149cfb269aa4a5699bbf919a1b0b137" />
     </div>
   );
 }
 
-function Projects() {
+function MainStory() {
+  return (
+    <a
+      href="https://tech.phonepe.com/nimbus-flexible-baremetal-provisioning/"
+      target="_blank"
+      className="mb-2 block"
+    >
+      <CardContainer containerClassName="p-0 rounded-sm">
+        <div className="relative">
+          <img
+            className="rounded-sm overflow-hidden object-cover"
+            src="https://tech.phonepe.com/static/97b8256c14389528acf5411b51d639e9/bc8e0/Nimbus-Flexible-BareMetal-Provisioning.png"
+          />
+          <div className="absolute z-10 bottom-0 left-0 w-full p-4 py-2 backdrop-blur backdrop-brightness-90">
+            <CardItem translateZ="100" className="">
+              <h1 className="text-white">
+                Nimbus: Flexible BareMetal Provisioning
+              </h1>
+            </CardItem>
+            <span className="text-xs text-white/80 italic">
+              Surya Murugan, Nandan Herekar, Raj Sharma, Vishnu Naini
+            </span>
+          </div>
+        </div>
+      </CardContainer>
+    </a>
+  );
+}
+
+async function Projects() {
   return (
     <div className="mt-6">
       <div className="">
@@ -143,9 +178,9 @@ function Projects() {
         <Project
           title="Makima"
           href="https://github.com/xrehpicx/makima"
-          description={`Manage servers using natural language.
-Keep track of stats of various things by memory.
-        Schedule absolutely anything across all kind of tasks by making the ai talk to itself in the future.`}
+          description={
+            "A Simpler & Easier to deploy OpenAI Assistants Alternative"
+          }
         />
         <Project
           title="PEE (Project Environment Executor)"
@@ -164,16 +199,22 @@ function Project({
   description,
   href,
   contribution,
+  sparkle,
 }: {
   title: string;
   description: JSX.Element | string;
   href?: string;
+  sparkle?: boolean;
   contribution?: boolean;
 }) {
   return (
     <div className="mt-4">
       <div className="flex items-center gap-1">
-        <h4 className="font-display font-medium text-sm">{title}</h4>
+        {sparkle ? (
+          <SparklesText sparklesCount={4} className="text-sm" text={title} />
+        ) : (
+          <h4 className="font-display font-medium text-sm">{title}</h4>
+        )}
         {href ? (
           <a href={href} className="" target="_blank">
             <ExternalLink className="w-3" />

@@ -22,6 +22,7 @@
     "@types/react-syntax-highlighter": "^15.5.11",
     "@vercel/og": "^0.6.2",
     "@vercel/speed-insights": "^1.0.2",
+    "cheerio": "^1.0.0-rc.12",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.0.0",
     "framer-motion": "^10.17.12",
