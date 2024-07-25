@@ -1,5 +1,4 @@
 import { BackgroundGradentProvider } from "@/components/gradient-provider";
-import GrainProvider from "@/components/grain";
 import { StyledNotion } from "@/components/notion/styled";
 import { ExternalLink, InfoIcon, Sparkle } from "lucide-react";
 import { Footer } from "./Footer";
@@ -9,7 +8,6 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
-import { motion } from "framer-motion";
 import { CssGrain } from "@/components/css-grain";
 
 export const revalidate = 100;
@@ -19,16 +17,6 @@ export default function Page() {
     <main>
       <div className="container py-12 max-w-xl">
         <CssGrain />
-        {/* <GrainProvider */}
-        {/*   grain_options={{ */}
-        {/*     patternWidth: 200, */}
-        {/*     patternHeight: 200, */}
-        {/*     grainOpacity: 0.1, */}
-        {/*     grainDensity: 1, */}
-        {/*     grainWidth: 1, */}
-        {/*     grainHeight: 1, */}
-        {/*   }} */}
-        {/* /> */}
         <header className="my-2 mt-8 relative">
           <Sparkle
             strokeWidth={1.5}
