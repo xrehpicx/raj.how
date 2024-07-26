@@ -34,7 +34,7 @@ export default function RootLayout({
     <html suppressHydrationWarning lang="en">
       <SpeedInsights />
       <body
-        className={cn(inter.className, inter.variable, dm.variable, "relative")}
+        className={cn(inter.className, inter.variable, dm.variable, "relative antialiased")}
       >
         <TopBlur />
         <TooltipProvider>{children}</TooltipProvider>

@@ -16,6 +16,7 @@ import { NRenderer } from "@/components/notion/renderer";
 import { Metadata } from "next";
 import Comments, { Reactions } from "@/components/comments";
 import { TracingBeam } from "@/components/ui/tracing-beam";
+import Ripple from "@/components/ui/ripple";
 
 export const revalidate = 100;
 
@@ -113,7 +114,7 @@ export default async function Story({
 
   return (
     <article suppressHydrationWarning className="relative antialiased">
-      <BackgroundGradentProvider className="-z-10 h-screen w-full opacity-60" />
+      <BackgroundGradentProvider className="-z-10 h-screen w-full opacity-30" />
       <Image
         width={400}
         height={300}
@@ -123,7 +124,10 @@ export default async function Story({
         className="w-full h-48 object-cover opacity-70 backdrop-saturate-200 backdrop-contrast-200 -z-50"
       />
 
-      <div className="container py-12 max-w-2xl">
+      <div className="absolute overflow-hidden h-[600px] left-0 w-full -top-12 -z-50">
+        <Ripple />
+      </div>
+      <div className="container relative py-12 max-w-2xl">
         <h1 className="text-2xl text-center text-pretty font-medium">
           {title}
         </h1>

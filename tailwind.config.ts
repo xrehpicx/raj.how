@@ -85,6 +85,14 @@ module.exports = {
             backgroundPosition: "350% 50%, 350% 50%",
           },
         },
+        ripple: {
+          "0%, 100%": {
+            transform: "translate(-50%, -50%) scale(1)",
+          },
+          "50%": {
+            transform: "translate(-50%, -50%) scale(0.9)",
+          },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -92,6 +100,7 @@ module.exports = {
         "fade-in": "fade-in 0.8s ease-out",
         "fade-in-from-bottom": "fade-in-from-bottom 0.6s ease-out",
         aurora: "aurora 60s linear infinite",
+        ripple: "ripple var(--duration,2s) ease calc(var(--i, 0)*.2s) infinite",
       },
     },
   },
