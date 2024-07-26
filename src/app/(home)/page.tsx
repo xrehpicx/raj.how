@@ -8,7 +8,6 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
-import { CssGrain } from "@/components/css-grain";
 import { CardContainer, CardItem } from "@/components/ui/3d-card";
 import { SparklesText } from "@/components/ui/sparkles-text";
 import { AuroraBackground } from "@/components/ui/aurora-background";
@@ -19,7 +18,6 @@ export default async function Page() {
   return (
     <main>
       <div className="container py-12 max-w-xl">
-        <CssGrain />
         <header className="my-2 mt-8 relative">
           <Sparkle
             strokeWidth={1.5}

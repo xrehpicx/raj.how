@@ -15,7 +15,7 @@ import Link from "next/link";
 import { NRenderer } from "@/components/notion/renderer";
 import { Metadata } from "next";
 import Comments, { Reactions } from "@/components/comments";
-import { CssGrain } from "@/components/css-grain";
+import { TracingBeam } from "@/components/ui/tracing-beam";
 
 export const revalidate = 100;
 
@@ -112,8 +112,7 @@ export default async function Story({
   const categoryId = process.env.COMMENTS_CATEGORY_ID;
 
   return (
-    <article suppressHydrationWarning className="relative">
-      <CssGrain />
+    <article suppressHydrationWarning className="relative antialiased">
       <BackgroundGradentProvider className="-z-10 h-screen w-full opacity-60" />
       <Image
         width={400}
@@ -123,6 +122,7 @@ export default async function Story({
         priority
         className="w-full h-48 object-cover opacity-70 backdrop-saturate-200 backdrop-contrast-200 -z-50"
       />
+
       <div className="container py-12 max-w-2xl">
         <h1 className="text-2xl text-center text-pretty font-medium">
           {title}
@@ -157,8 +157,10 @@ export default async function Story({
           </a>
         </div>
 
-        <div className="mt-2">
-          <NRenderer recordMap={recordMap} />
+        <div className="mt-2 relative">
+          <TracingBeam>
+            <NRenderer recordMap={recordMap} />
+          </TracingBeam>
         </div>
 
         <section className="connect-section">
@@ -176,7 +178,6 @@ export default async function Story({
           ) : null}
         </section>
       </div>
-
       <Footer className="max-w-2xl" />
     </article>
   );
