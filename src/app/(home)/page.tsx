@@ -162,7 +162,7 @@ async function Projects() {
         <Project
           title="PPEC"
           description={
-            "PhonePe’s internal cloud provisioning service with fine grain control over provisioning and network"
+            "PhonePe’s internal cloud provisioning service with fine grain control over provisioning and network."
           }
           href="https://tech.phonepe.com/heres-everything-you-need-to-know-about-phonepes-internal-cloud-provisioning-service/"
         />
