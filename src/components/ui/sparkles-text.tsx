@@ -58,6 +58,9 @@ interface SparklesTextProps {
     first: string;
     second: string;
   };
+
+  frequency?: number;
+  duration?: number;
 }
 
 export const SparklesText: React.FC<SparklesTextProps> = ({
@@ -65,6 +68,8 @@ export const SparklesText: React.FC<SparklesTextProps> = ({
   colors = { first: "#A07CFE", second: "#FE8FB5" },
   className,
   sparklesCount = 10,
+  frequency = 100,
+  duration,
   ...props
 }) => {
   const [sparkles, setSparkles] = useState<Sparkle[]>([]);
@@ -76,7 +81,7 @@ export const SparklesText: React.FC<SparklesTextProps> = ({
       const color = Math.random() > 0.5 ? colors.first : colors.second;
       const delay = Math.random() * 2;
       const scale = Math.random() * 1 + 0.3;
-      const lifespan = Math.random() * 10 + 5;
+      const lifespan = duration?? Math.random() * 10 + 5;
       const id = `${starX}-${starY}-${Date.now()}`;
       return { id, x: starX, y: starY, color, delay, scale, lifespan };
     };
@@ -96,7 +101,7 @@ export const SparklesText: React.FC<SparklesTextProps> = ({
     };
 
     initializeStars();
-    const interval = setInterval(updateStars, 100);
+    const interval = setInterval(updateStars, frequency);
 
     return () => clearInterval(interval);
   }, [colors.first, colors.second]);
@@ -124,7 +129,7 @@ export const SparklesText: React.FC<SparklesTextProps> = ({
   );
 };
 
-const Sparkle: React.FC<Sparkle> = ({ id, x, y, color, delay, scale }) => {
+const Sparkle: React.FC<Sparkle> = ({ id, x, y, color, delay, scale,lifespan }) => {
   return (
     <motion.svg
       key={id}
@@ -135,7 +140,7 @@ const Sparkle: React.FC<Sparkle> = ({ id, x, y, color, delay, scale }) => {
         scale: [0, scale, 0],
         rotate: [75, 120, 150],
       }}
-      transition={{ duration: 0.8, repeat: Infinity, delay }}
+      transition={{ duration: lifespan, repeat: Infinity, delay }}
       width="21"
       height="21"
       viewBox="0 0 21 21"

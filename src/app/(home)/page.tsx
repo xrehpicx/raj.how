@@ -162,7 +162,7 @@ async function Projects() {
         <Project
           title="PPEC"
           description={
-            "PhonePe’s internal cloud provisioning service with fine grain control over provisioning and network, I made the entire ux ui flow for this, very cool service"
+            "PhonePe’s internal cloud provisioning service with fine grain control over provisioning and network"
           }
           href="https://tech.phonepe.com/heres-everything-you-need-to-know-about-phonepes-internal-cloud-provisioning-service/"
         />
@@ -209,7 +209,13 @@ function Project({
     <div className="mt-4">
       <div className="flex items-center gap-1">
         {sparkle ? (
-          <SparklesText sparklesCount={4} className="text-sm" text={title} />
+          <SparklesText
+            duration={1.4}
+            frequency={100}
+            sparklesCount={8}
+            className="text-sm"
+            text={title}
+          />
         ) : (
           <h4 className="font-display font-medium text-sm">{title}</h4>
         )}

@@ -33,7 +33,7 @@
     @apply h-24 opacity-80 backdrop-saturate-150 brightness-125;
   }
   .notion-collection-card {
-    @apply rounded shadow bg-transparent backdrop-contrast-125 backdrop-saturate-200;
+    @apply rounded shadow-md bg-background backdrop-contrast-125 backdrop-saturate-200 hover:shadow-lg hover:no-underline transition-shadow;
   }
   .notion-page-icon-span {
     @apply flex items-center justify-center;
