@@ -107,10 +107,10 @@ function MainStory() {
     <a
       href="https://tech.phonepe.com/nimbus-flexible-baremetal-provisioning/"
       target="_blank"
-      className="mb-2 block rounded-sm overflow-hidden shadow-md"
+      className="mb-2 block"
     >
-      <CardContainer containerClassName="p-0 rounded-sm">
-        <div className="relative">
+      <CardContainer containerClassName="p-0">
+        <div className="relative rounded-sm overflow-hidden shadow-md">
           <img
             className="rounded-sm overflow-hidden object-cover"
             src="https://tech.phonepe.com/static/97b8256c14389528acf5411b51d639e9/bc8e0/Nimbus-Flexible-BareMetal-Provisioning.png"
