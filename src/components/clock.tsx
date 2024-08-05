@@ -2,8 +2,13 @@
 
 import React, { useState, useEffect } from "react";
 
+const now = new Date();
+const indiaTime = new Date(
+  now.toLocaleString("en-US", { timeZone: "Asia/Kolkata" }),
+);
+
 const Clock: React.FC = () => {
-  const [time, setTime] = useState(new Date());
+  const [time, setTime] = useState(indiaTime);
 
   useEffect(() => {
     const timer = setInterval(() => {
