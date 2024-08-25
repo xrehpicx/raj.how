@@ -50,10 +50,10 @@ export default async function Page() {
         </section>
       </div>
       <Footer />
-      <AuroraBackground className="fixed h-screen w-screen -z-10 left-0 top-0" />
-      {/* <div className="fixed h-screen w-screen -z-20 left-0 top-0 before:content-[''] before:absolute before:inset-0 before:bg-gradient-to-t before:from-transparent before:via-white before:to-white before:bg-opacity-80"> */}
-      {/*   <FlickeringGrid color="#7474FF" /> */}
-      {/* </div> */}
+      {/* <AuroraBackground className="fixed h-screen w-screen -z-10 left-0 top-0" /> */}
+      <div className="fixed h-screen w-screen -z-20 left-0 top-0 before:content-[''] before:absolute before:inset-0 before:bg-gradient-to-t before:from-transparent before:via-white before:to-white before:bg-opacity-80">
+        <FlickeringGrid color="#7474FF" />
+      </div>
       <BackgroundGradentProvider className="h-screen -z-10 w-full opacity-30" />
     </main>
   );
