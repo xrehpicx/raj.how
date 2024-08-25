@@ -5,7 +5,7 @@ import Link from "next/link";
 export function Footer({ className }: { className?: string }) {
   const year = new Date().getFullYear();
   return (
-    <footer className="border border-foreground/10">
+    <footer className="border bg-background/20 backdrop-blur border-foreground/10">
       <div
         className={cn(
           "container flex justify-between items-center my-2 max-w-xl",
