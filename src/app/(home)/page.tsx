@@ -10,7 +10,6 @@ import {
 } from "@/components/ui/tooltip";
 import { CardContainer, CardItem } from "@/components/ui/3d-card";
 import { SparklesText } from "@/components/ui/sparkles-text";
-import { AuroraBackground } from "@/components/ui/aurora-background";
 import FlickeringGrid from "@/components/ui/flickering";
 
 export const revalidate = 100;

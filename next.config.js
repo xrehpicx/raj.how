@@ -19,6 +19,9 @@ const nextConfig = {
       {
         hostname: "*.amazonaws.com",
       },
+      {
+        hostname: "*.raj.how",
+      },
     ],
   },
 };

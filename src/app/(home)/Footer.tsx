@@ -1,6 +1,6 @@
 import Clock from "@/components/clock";
+import { UserIcon } from "@/components/user-icon";
 import { cn } from "@/lib/utils";
-import Link from "next/link";
 
 export function Footer({ className }: { className?: string }) {
   const year = new Date().getFullYear();
@@ -16,9 +16,7 @@ export function Footer({ className }: { className?: string }) {
           <p className="text-foreground text-xs">Keep building</p>
         </div>
         <div>
-          <Link className="text-xs text-foreground/60" href="/">
-            ./raj
-          </Link>
+      <UserIcon />
         </div>
         <div className="flex items-center gap-2">
           <p className="text-foreground text-xs">{year}</p>

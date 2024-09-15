@@ -5,6 +5,7 @@ import { cn } from "@/lib/utils";
 import { TopBlur } from "@/components/top-blur";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { TooltipProvider } from "@/components/ui/tooltip";
+import { AuthProvider } from "@/context/auth/AuthProvider";
 
 const inter = Inter({ subsets: ["latin"], variable: "--body-font" });
 const dm = DM_Sans({ subsets: ["latin"], variable: "--display-font" });
@@ -34,10 +35,16 @@ export default function RootLayout({
     <html suppressHydrationWarning lang="en">
       <SpeedInsights />
       <body
-        className={cn(inter.className, inter.variable, dm.variable, "relative antialiased")}
+        className={cn(
+          inter.className,
+          inter.variable,
+          dm.variable,
+          "relative antialiased",
+        )}
       >
-        <TopBlur />
-        <TooltipProvider>{children}</TooltipProvider>
+        <TooltipProvider>
+          <AuthProvider>{children}</AuthProvider>
+        </TooltipProvider>
       </body>
     </html>
   );

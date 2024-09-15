@@ -17,6 +17,7 @@ import { Metadata } from "next";
 import Comments, { Reactions } from "@/components/comments";
 import { TracingBeam } from "@/components/ui/tracing-beam";
 import Ripple from "@/components/ui/ripple";
+import { TopBlur } from "@/components/top-blur";
 
 export const revalidate = 100;
 
@@ -113,76 +114,79 @@ export default async function Story({
   const categoryId = process.env.COMMENTS_CATEGORY_ID;
 
   return (
-    <article suppressHydrationWarning className="relative antialiased">
-      <BackgroundGradentProvider className="-z-10 h-screen w-full opacity-30" />
-      <Image
-        width={400}
-        height={300}
-        src={images[0]}
-        alt={title}
-        priority
-        className="w-full h-48 object-cover opacity-70 backdrop-saturate-200 backdrop-contrast-200 -z-50"
-      />
+    <>
+      <TopBlur />
+      <article suppressHydrationWarning className="relative antialiased">
+        <BackgroundGradentProvider className="-z-10 h-screen w-full opacity-30" />
+        <Image
+          width={400}
+          height={300}
+          src={images[0]}
+          alt={title}
+          priority
+          className="w-full h-48 object-cover opacity-70 backdrop-saturate-200 backdrop-contrast-200 -z-50"
+        />
 
-      <div className="absolute overflow-hidden h-[600px] left-0 w-full -top-12 -z-50">
-        <Ripple />
-      </div>
-      <div className="container relative py-12 max-w-2xl">
-        <h1 className="text-2xl text-center text-pretty font-medium">
-          {title}
-        </h1>
-        <p className="text-xs italic text-center text-muted-foreground">
-          {description}
-        </p>
-
-        <section className="comments-section h-[58px] my-2 overflow-hidden">
-          {repo && repoId && category && categoryId ? (
-            <Reactions
-              repo={repo as `${string}/${string}`}
-              repoId={repoId}
-              category={category}
-              categoryId={categoryId}
-            />
-          ) : null}
-        </section>
-
-        <div className="text-foreground/80 flex gap-1 hover:no-underline sticky top-12 z-50 mt-2 mx-auto w-fit">
-          <Link href="/">
-            <div className="backdrop-blur border border-foreground/20 backdrop-saturate-100 bg-background/60 backdrop-contrast-125 p-1 px-2 w-fit rounded-full flex gap-1 items-center">
-              <Home className="animate-in" size={12} />
-              <span className="text-xs">Home</span>
-            </div>
-          </Link>
-          <a href="#comments">
-            <div className="backdrop-blur border border-foreground/20 bg-background/60 backdrop-saturate-100 backdrop-contrast-125 p-1 px-2 w-fit rounded-full flex gap-1 items-center">
-              <MessageCircleIcon className="animate-in" size={12} />
-              <span className="text-xs">Comments</span>
-            </div>
-          </a>
+        <div className="absolute overflow-hidden h-[600px] left-0 w-full -top-12 -z-50">
+          <Ripple />
         </div>
+        <div className="container relative py-12 max-w-2xl">
+          <h1 className="text-2xl text-center text-pretty font-medium">
+            {title}
+          </h1>
+          <p className="text-xs italic text-center text-muted-foreground">
+            {description}
+          </p>
 
-        <div className="mt-2 relative">
-          <TracingBeam>
-            <NRenderer recordMap={recordMap} />
-          </TracingBeam>
+          <section className="comments-section h-[58px] my-2 overflow-hidden">
+            {repo && repoId && category && categoryId ? (
+              <Reactions
+                repo={repo as `${string}/${string}`}
+                repoId={repoId}
+                category={category}
+                categoryId={categoryId}
+              />
+            ) : null}
+          </section>
+
+          <div className="text-foreground/80 flex gap-1 hover:no-underline sticky top-12 z-50 mt-2 mx-auto w-fit">
+            <Link href="/">
+              <div className="backdrop-blur border border-foreground/20 backdrop-saturate-100 bg-background/60 backdrop-contrast-125 p-1 px-2 w-fit rounded-full flex gap-1 items-center">
+                <Home className="animate-in" size={12} />
+                <span className="text-xs">Home</span>
+              </div>
+            </Link>
+            <a href="#comments">
+              <div className="backdrop-blur border border-foreground/20 bg-background/60 backdrop-saturate-100 backdrop-contrast-125 p-1 px-2 w-fit rounded-full flex gap-1 items-center">
+                <MessageCircleIcon className="animate-in" size={12} />
+                <span className="text-xs">Comments</span>
+              </div>
+            </a>
+          </div>
+
+          <div className="mt-2 relative">
+            <TracingBeam>
+              <NRenderer recordMap={recordMap} />
+            </TracingBeam>
+          </div>
+
+          <section className="connect-section">
+            <Connect />
+          </section>
+
+          <section id="comments" className="comments-section pt-4">
+            {repo && repoId && category && categoryId ? (
+              <Comments
+                repo={repo as `${string}/${string}`}
+                repoId={repoId}
+                category={category}
+                categoryId={categoryId}
+              />
+            ) : null}
+          </section>
         </div>
-
-        <section className="connect-section">
-          <Connect />
-        </section>
-
-        <section id="comments" className="comments-section pt-4">
-          {repo && repoId && category && categoryId ? (
-            <Comments
-              repo={repo as `${string}/${string}`}
-              repoId={repoId}
-              category={category}
-              categoryId={categoryId}
-            />
-          ) : null}
-        </section>
-      </div>
-      <Footer className="max-w-2xl" />
-    </article>
+        <Footer className="max-w-2xl" />
+      </article>
+    </>
   );
 }
