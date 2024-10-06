@@ -11,6 +11,7 @@ import {
 import { CardContainer, CardItem } from "@/components/ui/3d-card";
 import { SparklesText } from "@/components/ui/sparkles-text";
 import FlickeringGrid from "@/components/ui/flickering";
+import { cn } from "@/lib/utils";
 
 export const revalidate = 100;
 
@@ -26,8 +27,8 @@ export default async function Page() {
           />
           <h1 className="text-xl font-display animate-in font-medium">./raj</h1>
         </header>
-        <div className="">
-          <p className="text-xs italic">I like to build things</p>
+        <div className="space-y-1">
+          <p className="text-xs italic">Like to break things</p>
           <p className="text-xs">
             Software Engineer <a href="https://phonepe.com">@PhonePe</a>
           </p>
@@ -36,7 +37,10 @@ export default async function Page() {
           <Dotfiles />
         </section>
         <section>
-          <Projects />
+          <FavProjects />
+        </section>
+        <section>
+          <BiggestProjects />
         </section>
         <section className="stories-section">
           <Stories />
@@ -134,7 +138,44 @@ function MainStory() {
   );
 }
 
-async function Projects() {
+async function BiggestProjects() {
+  return (
+    <div className="mt-6">
+      <div className="">
+        <h3 className="font-display font-medium">Work Projects</h3>
+        <p className="text-xs italic text-foreground/80">
+          Not that these are not one of my favorites.
+        </p>
+      </div>
+
+      <div className="sm:grid-cols-2 grid-cols-1 grid gap-2">
+        <Project
+          title="PPEC"
+          description={
+            "PhonePe’s internal cloud provisioning service with fine grain control over provisioning and network."
+          }
+          href="https://tech.phonepe.com/heres-everything-you-need-to-know-about-phonepes-internal-cloud-provisioning-service/"
+        />
+        <Project
+          title="PIOUS"
+          description={
+            "Custom Linux distribution for tracking and provisioning servers at scale."
+          }
+          href="https://tech.phonepe.com/heres-everything-you-need-to-know-about-phonepes-internal-cloud-provisioning-service/"
+        />
+        <Project
+          fullWidth
+          title="Chakshu"
+          description={
+            "Server inventory management service that manages procurement to server onboarding."
+          }
+          href="https://tech.phonepe.com/phonepes-server-state-management-via-senzu-and-pious-an-overview/"
+        />
+      </div>
+    </div>
+  );
+}
+async function FavProjects() {
   return (
     <div className="mt-6">
       <div className="">
@@ -148,12 +189,21 @@ async function Projects() {
 
       <div className="sm:grid-cols-2 grid-cols-1 grid gap-2">
         <Project
-          title="PIOUS"
+          title="Makima"
+          href="https://github.com/xrehpicx/makima"
           description={
-            "Custom Linux distribution for tracking and provisioning servers at scale."
+            "A Simpler & Easier to deploy OpenAI Assistants Alternative"
           }
-          href="https://tech.phonepe.com/heres-everything-you-need-to-know-about-phonepes-internal-cloud-provisioning-service/"
         />
+
+        <Project
+          title="PEE (Project Environment Executor)"
+          description={
+            "A tmux session manager with a tui and config control to setup tmux sessions."
+          }
+          href="https://github.com/xrehpicx/pee"
+        />
+
         <Project
           contribution
           title="shadcn/ui"
@@ -162,33 +212,11 @@ async function Projects() {
           }
           href="https://ui.shadcn.com/"
         />
+
         <Project
-          title="PPEC"
-          description={
-            "PhonePe’s internal cloud provisioning service with fine grain control over provisioning and network."
-          }
-          href="https://tech.phonepe.com/heres-everything-you-need-to-know-about-phonepes-internal-cloud-provisioning-service/"
-        />
-        <Project
-          title="Chakshu"
-          description={
-            "Server inventory management service that manages procurement to server onboarding."
-          }
-          href="https://tech.phonepe.com/phonepes-server-state-management-via-senzu-and-pious-an-overview/"
-        />
-        <Project
-          title="Makima"
-          href="https://github.com/xrehpicx/makima"
-          description={
-            "A Simpler & Easier to deploy OpenAI Assistants Alternative"
-          }
-        />
-        <Project
-          title="PEE (Project Environment Executor)"
-          description={
-            "A tmux session manager with a tui and config control to setup tmux sessions."
-          }
-          href="https://github.com/xrehpicx/pee"
+          title="Anya"
+          description={"Cheaper jarvis"}
+          href="https://github.com/xrehpicx/anya"
         />
       </div>
     </div>
@@ -200,16 +228,18 @@ function Project({
   description,
   href,
   contribution,
+  fullWidth,
   sparkle,
 }: {
   title: string;
+  fullWidth?: boolean;
   description: JSX.Element | string;
   href?: string;
   sparkle?: boolean;
   contribution?: boolean;
 }) {
   return (
-    <div className="mt-4">
+    <div className={cn("mt-4", fullWidth ? "col-span-2" : "")}>
       <div className="flex items-center gap-1">
         {sparkle ? (
           <SparklesText
