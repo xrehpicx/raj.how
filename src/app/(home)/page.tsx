@@ -123,14 +123,19 @@ function MainStory() {
             src="https://tech.phonepe.com/static/97b8256c14389528acf5411b51d639e9/bc8e0/Nimbus-Flexible-BareMetal-Provisioning.png"
           />
           <div className="absolute z-10 bottom-0 left-0 w-full p-4 py-2 backdrop-blur backdrop-brightness-90">
-            <CardItem translateZ="100" className="">
+            <CardItem translateZ="100" className="space-y-1">
               <h1 className="text-white">
                 Nimbus: Flexible BareMetal Provisioning
               </h1>
             </CardItem>
-            <span className="text-xs text-white/80 italic">
-              Surya Murugan, Nandan Herekar, Raj Sharma, Vishnu Naini
-            </span>
+            <div className="space-x-2">
+              <span className="text-xs text-white/80 font-semibold">
+                tech.phonepe.com
+              </span>
+              <span className="text-xs text-white/80 italic">
+                Surya Murugan, Nandan Herekar, Raj Sharma, Vishnu Naini
+              </span>
+            </div>
           </div>
         </div>
       </CardContainer>
