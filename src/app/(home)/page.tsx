@@ -220,7 +220,7 @@ async function FavProjects() {
 
         <Project
           title="Anya"
-          description={"Cheaper jarvis"}
+          description={"Cheaper jarvis (more like friday)"}
           href="https://github.com/xrehpicx/anya"
         />
       </div>
