@@ -144,7 +144,7 @@ async function BiggestProjects() {
       <div className="">
         <h3 className="font-display font-medium">Work Projects</h3>
         <p className="text-xs italic text-foreground/80">
-          Not that these are not one of my favorites.
+          Not that these are not one of my favorites too.
         </p>
       </div>
 
