@@ -244,7 +244,7 @@ function Project({
   contribution?: boolean;
 }) {
   return (
-    <div className={cn("mt-4", fullWidth ? "col-span-2" : "")}>
+    <div className={cn("mt-4", fullWidth ? "md:col-span-2" : "")}>
       <div className="flex items-center gap-1">
         {sparkle ? (
           <SparklesText
