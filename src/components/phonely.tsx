@@ -39,8 +39,8 @@ export function PhonelyWidget() {
           </Button>
         </motion.div>
       </DialogTrigger>
-      <DialogContent className="bg-transparent border-none max-w-sm md:max-w-4xl p-0">
-        <div className="relative rounded-xl w-full h-[70vh] max-h-[600px] bg-transparent overflow-hidden">
+      <DialogContent className="bg-transparent shadow-none overflow-auto border-none max-w-sm md:max-w-4xl p-0">
+        <div className="relative rounded-xl w-full h-[70vh] max-h-[600px] shadow bg-transparent overflow-hidden">
           <AnimatePresence>
             {!isIframeLoaded && (
               <motion.div
@@ -57,8 +57,7 @@ export function PhonelyWidget() {
             )}
           </AnimatePresence>
           <iframe
-            src="https://phonely.raj.how"
-            // src="http://localhost:3001"
+            src={process.env.NODE_ENV === "production" ? "https://phonely.raj.how" : "http://localhost:3001"}
             allow="microphone"
             onLoad={() => setIsIframeLoaded(true)}
             className="w-full h-full"
