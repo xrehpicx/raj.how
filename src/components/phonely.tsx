@@ -40,7 +40,7 @@ export function PhonelyWidget() {
         </motion.div>
       </DialogTrigger>
       <DialogContent className="bg-transparent border-none max-w-sm md:max-w-4xl p-0">
-        <div className="relative rounded-3xl w-full h-[50vh] bg-transparent overflow-hidden">
+        <div className="relative rounded-xl w-full h-[70vh] max-h-[600px] bg-transparent overflow-hidden">
           <AnimatePresence>
             {!isIframeLoaded && (
               <motion.div
@@ -57,11 +57,15 @@ export function PhonelyWidget() {
             )}
           </AnimatePresence>
           <iframe
-            src="https://phonely.raj.how"
+            // src="https://phonely.raj.how"
+            src="http://localhost:3001"
             allow="microphone"
             onLoad={() => setIsIframeLoaded(true)}
             className="w-full h-full"
           />
+        </div>
+        <div className="-bottom-full text-white/80 text-xs w-full text-center z-10">
+          Powered by phonely
         </div>
       </DialogContent>
     </Dialog>
