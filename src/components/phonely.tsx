@@ -5,6 +5,8 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Loader2, Sparkles } from "lucide-react";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
+import Image from "next/image";
+import Link from "next/link";
 
 export function PhonelyWidget() {
   const [isOpen, setIsOpen] = useState(false);
@@ -57,15 +59,31 @@ export function PhonelyWidget() {
             )}
           </AnimatePresence>
           <iframe
-            src={process.env.NODE_ENV === "production" ? "https://phonely.raj.how" : "http://localhost:3001"}
+            src={
+              process.env.NODE_ENV === "production"
+                ? "https://phonely.raj.how"
+                : "http://localhost:3001"
+            }
             allow="microphone"
             onLoad={() => setIsIframeLoaded(true)}
             className="w-full h-full"
           />
         </div>
-        <div className="-bottom-full text-white/80 text-xs w-full text-center z-10">
-          Powered by phonely
-        </div>
+        <Link className="hover:no-underline" target="_blank" href="https://phonely.ai">
+          <div className="-bottom-full text-white/80 text-xs w-full text-center flex items-center justify-center gap-2 z-10">
+            Powered by{" "}
+            <Image
+              src={
+                (process.env.NODE_ENV === "production"
+                  ? "https://phonely.raj.how"
+                  : "http://localhost:3001") + "/phonely-full-light.png"
+              }
+              width={60}
+              height={20}
+              alt="Phonely"
+            />
+          </div>
+        </Link>
       </DialogContent>
     </Dialog>
   );
