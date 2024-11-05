@@ -37,7 +37,7 @@ export function Connect() {
                 variant="secondary"
                 size="sm"
                 data-cal-namespace="meet"
-                data-cal-link="raj/meet"
+                data-cal-link="raj/quick-hello"
                 data-cal-origin="https://cal.raj.how"
                 data-cal-config='{"layout":"month_view","theme":"light"}'
               >
