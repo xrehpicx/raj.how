@@ -12,6 +12,7 @@
     "@blocksuite/blocks": "^0.0.0-canary-20240904094417",
     "@blocksuite/presets": "^0.0.0-canary-20240904094417",
     "@blocksuite/store": "^0.0.0-canary-20240904094417",
+    "@calcom/embed-react": "^1.5.1",
     "@giscus/react": "^3.0.0",
     "@mdx-js/loader": "^3.0.0",
     "@mdx-js/react": "^3.0.0",

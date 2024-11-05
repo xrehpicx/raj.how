@@ -2,6 +2,13 @@
 
 import { useEffect, useState } from "react";
 import { customAlphabet } from "nanoid";
+import { Button } from "@/components/ui/button";
+import { Calendar } from "lucide-react";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 
 const generate = customAlphabet("abcdefghijklmnopqrstuvwxyz", 9);
 
@@ -21,18 +28,26 @@ export function Connect() {
   return (
     <div className="mt-6">
       <div className="mb-2 space-y-1">
-        <h3 className="font-display font-medium">Connect</h3>
-        
-        <p className="text-xs flex gap-1 flex-wrap italic text-foreground/80">
-          You can schedule a meeting with me at{" "}
-          <a
-            className="flex items-center text-primary justify-center"
-            href={`https://cal.raj.how/raj`}
-            target="_blank"
-          >
-            cal.raj.how/raj
-          </a>{" "}for any tech/design help.
-        </p>
+        <div className="flex items-center gap-2">
+          <h3 className="font-display font-medium">Connect</h3>
+          <Tooltip>
+            <TooltipTrigger>
+              <Button
+                className="rounded-full flex items-center gap-1 bg-background/40 backdrop-blur-md text-foreground"
+                variant="secondary"
+                size="sm"
+                data-cal-namespace="meet"
+                data-cal-link="raj/meet"
+                data-cal-origin="https://cal.raj.how"
+                data-cal-config='{"layout":"month_view","theme":"light"}'
+              >
+                <Calendar size={16} />
+                Schedule
+              </Button>
+            </TooltipTrigger>
+            <TooltipContent>Anything tech/design.</TooltipContent>
+          </Tooltip>
+        </div>
         <p className="text-xs flex gap-1 flex-wrap italic text-foreground/80">
           You can also reach me at{" "}
           <a

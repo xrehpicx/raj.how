@@ -13,6 +13,7 @@ import { SparklesText } from "@/components/ui/sparkles-text";
 import FlickeringGrid from "@/components/ui/flickering";
 import { cn } from "@/lib/utils";
 import { PhonelyWidget } from "@/components/phonely";
+import { CalPopup } from "./cal";
 
 export const revalidate = 100;
 
@@ -23,6 +24,7 @@ export default async function Page({
 }) {
   return (
     <main>
+      <CalPopup />
       <div className="container py-12 max-w-xl">
         <header className="my-2 mt-8 relative">
           <Sparkle
