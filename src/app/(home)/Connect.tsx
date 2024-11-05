@@ -20,10 +20,21 @@ export function Connect() {
 
   return (
     <div className="mt-6">
-      <div className="mb-2">
+      <div className="mb-2 space-y-1">
         <h3 className="font-display font-medium">Connect</h3>
+        
         <p className="text-xs flex gap-1 flex-wrap italic text-foreground/80">
-          Reach me at{" "}
+          You can schedule a meeting with me at{" "}
+          <a
+            className="flex items-center text-primary justify-center"
+            href={`https://cal.raj.how/raj`}
+            target="_blank"
+          >
+            cal.raj.how/raj
+          </a>{" "}for any tech/design help.
+        </p>
+        <p className="text-xs flex gap-1 flex-wrap italic text-foreground/80">
+          You can also reach me at{" "}
           <a
             target="_blank"
             href="https://x.com/xrehpicx"
