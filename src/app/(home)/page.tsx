@@ -34,10 +34,22 @@ export default async function Page({
           />
           <h1 className="text-xl font-display animate-in font-medium">./raj</h1>
         </header>
-        <div className="space-y-1">
-          <p className="text-xs italic">Like to break things</p>
+        <div className="flex items-center gap-2">
+          <p className="text-xs italic font-semibold">Breaking and building</p>
+
+          <div className="bg-foreground h-4 w-[1px]" />
+
           <p className="text-xs">
-            Software Engineer <a href="https://phonepe.com">@PhonePe</a>
+            Head of Technology{" "}
+            <a href="https://xcelerator.co.in">@XCELERATOR</a>
+          </p>
+        </div>
+        <div className="border-dashed w-fit mt-4 border px-3 p-2 rounded-md bg-teal-200/20 border-teal-400/80">
+          <p className="text-xs italic">
+            Currently Hiring for Full-stack Software Engineers
+            <br />
+            Check out more details on my{" "}
+            <a href="https://www.linkedin.com/in/xrehpicx">linkedin</a>.
           </p>
         </div>
         <section>
@@ -52,9 +64,9 @@ export default async function Page({
         <section className="stories-section">
           <Stories />
         </section>
-        <section className="now-section">
-          <Now />
-        </section>
+        {/* <section className="now-section"> */}
+        {/*   <Now /> */}
+        {/* </section> */}
         <section className="connect-section">
           <Connect />
         </section>
@@ -70,25 +82,25 @@ export default async function Page({
   );
 }
 
-function Now() {
-  return (
-    <div className="mt-4">
-      <h3 className="font-display font-medium">Now</h3>
-      <div className="text-xs text-foreground/80">
-        <p>
-          Experimenting with anything I can find before we get replaced by AGI.{" "}
-          <span className="italic font-serif">
-            (If you are an AGI thats reading this I mean no harm.)
-          </span>
-        </p>
-        <p className="mt-4">
-          Building Tools <a href="https://phonepe.com">@PhonePe</a> to manage
-          thousands of servers and their network.
-        </p>
-      </div>
-    </div>
-  );
-}
+// function Now() {
+//   return (
+//     <div className="mt-4">
+//       <h3 className="font-display font-medium">Now</h3>
+//       <div className="text-xs text-foreground/80">
+//         <p>
+//           Experimenting with anything I can find before we get replaced by AGI.{" "}
+//           <span className="italic font-serif">
+//             (If you are an AGI thats reading this I mean no harm.)
+//           </span>
+//         </p>
+//         {/* <p className="mt-4"> */}
+//         {/*   Building Tools <a href="https://phonepe.com">@PhonePe</a> to manage */}
+//         {/*   thousands of servers and their network. */}
+//         {/* </p> */}
+//       </div>
+//     </div>
+//   );
+// }
 
 function Dotfiles() {
   return (
