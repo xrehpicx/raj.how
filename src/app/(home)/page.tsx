@@ -124,8 +124,41 @@ function Stories() {
         </p>
       </div>
       <MainStory />
+      <XceleratorStory />
       <StyledNotion className="" blockId="d149cfb269aa4a5699bbf919a1b0b137" />
     </div>
+  );
+}
+
+function XceleratorStory() {
+  return (
+    <a
+      href="https://www.xcelerator.work/posts/wireguard-saves-us-1cr-annually"
+      target="_blank"
+      className="mb-2 block"
+    >
+      <CardContainer containerClassName="p-0">
+        <div className="relative rounded-sm overflow-hidden shadow-md">
+          <img
+            className="rounded-sm overflow-hidden object-cover"
+            src="https://www.xcelerator.work/_next/image?url=%2Fposts%2Fwireguard-blog-hero.png&w=3840&q=75"
+          />
+          <div className="absolute z-10 bottom-0 left-0 w-full p-4 py-2 backdrop-blur backdrop-brightness-90">
+            <CardItem translateZ="100" className="space-y-1">
+              <h1 className="text-white">
+                Wireguard saves us ₹1,00,00,000 annually
+              </h1>
+            </CardItem>
+            <div className="space-x-2">
+              <span className="text-xs text-white/80 font-semibold">
+                xcelerator.work
+              </span>
+              <span className="text-xs text-white/80 italic">Raj Sharma</span>
+            </div>
+          </div>
+        </div>
+      </CardContainer>
+    </a>
   );
 }
 
