@@ -18,7 +18,7 @@ export const GrainProvider = ({
   grain_options?: GrainOptions;
 }) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const animationFrameId = useRef<number>();
+  const animationFrameId = useRef<number>(0);
 
   const createGrainPattern = (
     ctx: CanvasRenderingContext2D,
@@ -82,14 +82,16 @@ export const GrainProvider = ({
   }, [animate]);
 
   return (
-    <motion.canvas
-      initial={{ opacity: 0, filter: "blur(10px)" }}
-      animate={{ opacity: 1, filter: "blur(0px)" }}
-      transition={{ duration: 2 }}
-      ref={canvasRef}
-      id="grained-canvas"
-      className="fixed left-0 top-0 inset-0 z-50 pointer-events-none w-full h-full"
-    />
+    <div className="fixed left-0 top-0 inset-0 z-50 pointer-events-none w-full h-full">
+      <div id="grained-canvas">
+        <motion.canvas
+          initial={{ opacity: 0, filter: "blur(10px)" }}
+          animate={{ opacity: 1, filter: "blur(0px)" }}
+          transition={{ duration: 2 }}
+          ref={canvasRef}
+        />
+      </div>
+    </div>
   );
 };
 export default GrainProvider;

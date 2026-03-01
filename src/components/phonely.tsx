@@ -23,37 +23,39 @@ export function PhonelyWidget() {
     }
   };
 
-  return (
+    return (
     <Dialog open={isOpen} onOpenChange={handleOpenChange}>
-      <DialogTrigger asChild>
-        <motion.div
-          className="fixed bottom-4 right-4 z-50"
-          initial={{ opacity: 0, scale: 0.5 }}
-          animate={{ opacity: 1, scale: 1 }}
-          exit={{ opacity: 0, scale: 0.5 }}
-          transition={{ duration: 0.3 }}
-        >
-          <Button
-            size="icon"
-            className="rounded-full bg-primary text-primary-foreground shadow-lg"
+      <DialogTrigger>
+        <div className="fixed bottom-4 right-4 z-50">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.5 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.5 }}
+            transition={{ duration: 0.3 }}
           >
-            <Sparkles className="h-5 w-5" />
-          </Button>
-        </motion.div>
+            <Button
+              size="icon"
+              className="rounded-full bg-primary text-primary-foreground shadow-lg"
+            >
+              <Sparkles className="h-5 w-5" />
+            </Button>
+          </motion.div>
+        </div>
       </DialogTrigger>
       <DialogContent className="bg-transparent shadow-none overflow-auto border-none max-w-sm md:max-w-4xl p-0">
         <div className="relative rounded-xl w-full h-[70vh] max-h-[600px] shadow bg-transparent overflow-hidden">
           <AnimatePresence>
             {!isIframeLoaded && (
               <motion.div
-                className="absolute inset-0 flex items-center justify-center bg-background"
                 initial={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.3 }}
               >
-                <div className="flex items-center gap-2">
-                  <p>Setting up</p>
-                  <Loader2 className="h-4 w-4 animate-spin" />
+                <div className="absolute inset-0 flex items-center justify-center bg-background">
+                  <div className="flex items-center gap-2">
+                    <p>Setting up</p>
+                    <Loader2 className="h-4 w-4 animate-spin" />
+                  </div>
                 </div>
               </motion.div>
             )}

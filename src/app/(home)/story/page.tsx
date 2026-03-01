@@ -28,6 +28,13 @@ type Props = {
 export async function generateMetadata({
   searchParams,
 }: Props): Promise<Metadata> {
+  if (!searchParams.id) {
+    return {
+      title: "Stories",
+      description: "Stories and writings by raj.",
+    };
+  }
+
   const notion = new NotionAPI();
 
   const recordMap = await notion.getPage(searchParams.id!);

@@ -14,7 +14,8 @@ export function CssGrain() {
       transition={{
         duration: 10,
       }}
-      className="hero pointer-events-none fixed top-0 left-0 w-full h-screen"
-    ></motion.div>
+    >
+      <div className="hero pointer-events-none fixed top-0 left-0 w-full h-screen" />
+    </motion.div>
   );
 }

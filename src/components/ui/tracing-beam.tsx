@@ -12,7 +12,7 @@ export const TracingBeam = ({
 }) => {
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
-    target: ref,
+    target: ref as unknown as React.RefObject<HTMLElement>,
     offset: ["start start", "end start"],
   });
 
@@ -50,38 +50,37 @@ export const TracingBeam = ({
   );
 
   return (
-    <motion.div
-      ref={ref}
-      className={cn("relative w-full max-w-4xl mx-auto h-full", className)}
-    >
+    <div ref={ref} className={cn("relative w-full max-w-4xl mx-auto h-full", className)}>
       <div className="absolute -left-12 md:-left-20 top-2">
-        <motion.div
-          transition={{
-            duration: 0.2,
-            delay: 0.5,
-          }}
-          animate={{
-            boxShadow:
-              scrollYProgress.get() > 0
-                ? "none"
-                : "rgba(0, 0, 0, 0.24) 0px 3px 8px",
-          }}
-          className="ml-[27px] h-4 w-4 rounded-full border border-netural-200 shadow-sm flex items-center justify-center"
-        >
+        <div className="ml-[27px] h-4 w-4 rounded-full border border-netural-200 shadow-sm flex items-center justify-center">
           <motion.div
             transition={{
               duration: 0.2,
               delay: 0.5,
             }}
             animate={{
-              backgroundColor:
-                scrollYProgress.get() > 0 ? "white" : "var(--teal-400)",
-              borderColor:
-                scrollYProgress.get() > 0 ? "white" : "var(--teal-400)",
+              boxShadow:
+                scrollYProgress.get() > 0
+                  ? "none"
+                  : "rgba(0, 0, 0, 0.24) 0px 3px 8px",
             }}
-            className="h-2 w-2  rounded-full border border-neutral-300 bg-white"
-          />
-        </motion.div>
+          >
+            <div className="h-2 w-2  rounded-full border border-neutral-300 bg-white">
+              <motion.div
+                transition={{
+                  duration: 0.2,
+                  delay: 0.5,
+                }}
+                animate={{
+                  backgroundColor:
+                    scrollYProgress.get() > 0 ? "white" : "var(--teal-400)",
+                  borderColor:
+                    scrollYProgress.get() > 0 ? "white" : "var(--teal-400)",
+                }}
+              />
+            </div>
+          </motion.div>
+        </div>
         <svg
           viewBox={`0 0 20 ${svgHeight}`}
           width="20"
@@ -103,7 +102,6 @@ export const TracingBeam = ({
             fill="none"
             stroke="url(#gradient)"
             strokeWidth="1.25"
-            className="motion-reduce:hidden"
             transition={{
               duration: 10,
             }}
@@ -126,6 +124,6 @@ export const TracingBeam = ({
         </svg>
       </div>
       <div ref={contentRef}>{children}</div>
-    </motion.div>
+    </div>
   );
 };

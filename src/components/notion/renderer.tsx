@@ -7,7 +7,7 @@ import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Loader2 } from "lucide-react";
 import { getBlockTitle } from "notion-utils";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
@@ -45,6 +45,31 @@ export function NRenderer({
   fullPage?: boolean;
 }) {
   const [render, setRender] = useState(false);
+  const normalizedRecordMap = useMemo(() => {
+    const blocks = Object.entries(recordMap.block).map(([id, blockData]) => {
+      if (!blockData?.value) return [id, blockData];
+
+      if (blockData.value.id === undefined) {
+        return [
+          id,
+          {
+            ...blockData,
+            value: {
+              ...blockData.value,
+              id,
+            },
+          },
+        ];
+      }
+
+      return [id, blockData];
+    });
+
+    return {
+      ...recordMap,
+      block: Object.fromEntries(blocks),
+    };
+  }, [recordMap]);
 
   useEffect(() => {
     setRender(true);
@@ -52,46 +77,47 @@ export function NRenderer({
 
   if (!render) {
     return (
-      <motion.div
-        initial={{ opacity: 0, filter: "blur(10px)" }}
-        animate={{ opacity: 1, filter: "blur(0px)" }}
-        className="h-[80vh] flex items-center flex-col justify-center"
-      >
-        <div className="pb-36">
-          <div className="flex items-center gap-1">
-            <h2 className="text-foreground">./raj</h2>
-            <Loader2 size={12} className="animate-spin" />
+      <div className="h-[80vh] flex items-center flex-col justify-center">
+        <motion.div
+          initial={{ opacity: 0, filter: "blur(10px)" }}
+          animate={{ opacity: 1, filter: "blur(0px)" }}
+        >
+          <div className="pb-36">
+            <div className="flex items-center gap-1">
+              <h2 className="text-foreground">./raj</h2>
+              <Loader2 size={12} className="animate-spin" />
+            </div>
+            <p className="italic text-xs text-muted-foreground">executing...</p>
           </div>
-          <p className="italic text-xs text-muted-foreground">executing...</p>
-        </div>
-      </motion.div>
+        </motion.div>
+      </div>
     );
   }
 
   if (render)
     return (
-      <motion.div
-        initial={{ opacity: 0, filter: "blur(10px)", height: "0px" }}
-        animate={{ opacity: 1, filter: "blur(0px)", height: "auto" }}
-        className={cn("", className)}
-        suppressHydrationWarning
-      >
-        <NotionRenderer
-          components={{
-            Code: CodeBlock,
-            Collection,
-            Equation,
-            Modal,
-            nextLink: Link,
-            Link: Link,
-            Image: Image,
-            nextImage: Image,
-          }}
-          mapPageUrl={(pageId) => `/story?id=${pageId}`}
-          fullPage={fullPage}
-          recordMap={recordMap}
-        />
-      </motion.div>
+      <div className={cn("", className)} suppressHydrationWarning>
+        <motion.div
+          initial={{ opacity: 0, filter: "blur(10px)", height: "0px" }}
+          animate={{ opacity: 1, filter: "blur(0px)", height: "auto" }}
+        >
+          <NotionRenderer
+            components={{
+              Code: CodeBlock,
+              Collection,
+              Equation,
+              Modal,
+              nextLink: Link,
+              Link: Link,
+              Image: Image,
+              nextImage: Image,
+            }}
+            mapPageUrl={(pageId) => `/story?id=${pageId}`}
+            fullPage={fullPage}
+            recordMap={normalizedRecordMap}
+          />
+        </motion.div>
+      </div>
     );
 }
 

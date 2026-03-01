@@ -14,6 +14,7 @@ import FlickeringGrid from "@/components/ui/flickering";
 import { cn } from "@/lib/utils";
 import { PhonelyWidget } from "@/components/phonely";
 import { CalPopup } from "./cal";
+import { type ReactNode } from "react";
 
 export const revalidate = 100;
 
@@ -291,7 +292,7 @@ function Project({
 }: {
   title: string;
   fullWidth?: boolean;
-  description: JSX.Element | string;
+  description: ReactNode;
   href?: string;
   sparkle?: boolean;
   contribution?: boolean;

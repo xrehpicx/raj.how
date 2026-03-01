@@ -12,9 +12,10 @@ export function GradientProvider({ children }: { children: React.ReactNode }) {
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        className="absolute rotate-180 -z-[5] w-[600px] h-[800px] opacity-60 top-1/2 -translate-x-1/2 -translate-y-1/2 left-1/2"
       >
-        <Image src={gradient} alt="gradient" />
+        <div className="absolute rotate-180 -z-[5] w-[600px] h-[800px] opacity-60 top-1/2 -translate-x-1/2 -translate-y-1/2 left-1/2">
+          <Image src={gradient} alt="gradient" />
+        </div>
       </motion.div>
       {children}
     </div>
@@ -31,19 +32,22 @@ export function SymetricGradProvider({
   gradient_class?: string;
 }) {
   return (
-    <motion.div className={cn("relative w-fit", className)}>
+    <div className={cn("relative w-fit", className)}>
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        className={cn(
-          "absolute w-full -z-10 h-[800px] opacity-70 top-1/4 rotate-180 -translate-x-1/2 -translate-y-1/2 left-1/2",
-          gradient_class,
-        )}
       >
-        <Image src={symetric_gradient} alt="gradient" />
+        <div
+          className={cn(
+            "absolute w-full -z-10 h-[800px] opacity-70 top-1/4 rotate-180 -translate-x-1/2 -translate-y-1/2 left-1/2",
+            gradient_class,
+          )}
+        >
+          <Image src={symetric_gradient} alt="gradient" />
+        </div>
       </motion.div>
       {children}
-    </motion.div>
+    </div>
   );
 }
 
@@ -53,26 +57,22 @@ export function BackgroundGradentProvider({
   className?: string;
 }) {
   return (
-    <motion.div
-      className={cn(
-        "fixed overflow-hidden w-full h-full opacity-60 top-0 left-0",
-        className,
-      )}
-    >
+    <div className={cn("fixed overflow-hidden w-full h-full opacity-60 top-0 left-0", className)}>
       <motion.div
         // blur and fade in
         initial={{ opacity: 0, filter: "blur(10px)" }}
         animate={{ opacity: 1, filter: "blur(0px)" }}
         transition={{ delay: 0.6 }}
-        className="w-full h-full"
       >
-        <Image
-          width={1200}
-          className="w-full h-full object-cover"
-          src={background_gradient}
-          alt="gradient"
-        />
+        <div className="w-full h-full">
+          <Image
+            width={1200}
+            className="w-full h-full object-cover"
+            src={background_gradient}
+            alt="gradient"
+          />
+        </div>
       </motion.div>
-    </motion.div>
+    </div>
   );
 }
