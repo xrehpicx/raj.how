@@ -18,8 +18,21 @@ export async function StyledNotion({
 }) {
   const notion = new NotionAPI();
 
-  console.log("blockId", blockId);
-  const recordMap = await notion.getPage(blockId);
+  let recordMap;
+
+  try {
+    recordMap = await notion.getPage(blockId);
+  } catch (error) {
+    console.error("Failed to load Notion page", { blockId, error });
+
+    return (
+      <div className={className}>
+        <p className="text-xs italic text-foreground/80">
+          Stories are temporarily unavailable. Please try again in a bit.
+        </p>
+      </div>
+    );
+  }
 
   return (
     <NRenderer
