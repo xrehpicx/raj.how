@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import React, { useEffect, useRef, useCallback } from "react";
+import React, { useEffect, useRef } from "react";
 
 type GrainOptions = {
   patternWidth?: number;
@@ -18,7 +18,7 @@ export const GrainProvider = ({
   grain_options?: GrainOptions;
 }) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const animationFrameId = useRef<number>(0);
+  const animationFrameId = useRef<number | null>(null);
 
   const createGrainPattern = (
     ctx: CanvasRenderingContext2D,
@@ -44,42 +44,43 @@ export const GrainProvider = ({
     return ctx.createPattern(patternCanvas, "repeat");
   };
 
-  const animate = useCallback(() => {
-    const canvas = canvasRef.current;
-    if (canvas) {
-      const ctx = canvas.getContext("2d");
-      if (ctx) {
-        const options: GrainOptions = {
-          patternWidth: 200,
-          patternHeight: 200,
-          grainOpacity: 0.05,
-          grainDensity: 1,
-          grainWidth: 1,
-          grainHeight: 1,
-        };
-
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-
-        const pattern = createGrainPattern(ctx, grain_options ?? options);
-        if (pattern) {
-          ctx.fillStyle = pattern;
-          ctx.fillRect(0, 0, canvas.width, canvas.height);
-        }
-
-        animationFrameId.current = requestAnimationFrame(animate);
-      }
-    }
-  }, [grain_options]);
-
   useEffect(() => {
-    animationFrameId.current = requestAnimationFrame(animate);
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+
+    const ctx = canvas.getContext("2d");
+    if (!ctx) return;
+
+    const options: GrainOptions = {
+      patternWidth: 200,
+      patternHeight: 200,
+      grainOpacity: 0.05,
+      grainDensity: 1,
+      grainWidth: 1,
+      grainHeight: 1,
+    };
+
+    const draw = () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+
+      const pattern = createGrainPattern(ctx, grain_options ?? options);
+      if (pattern) {
+        ctx.fillStyle = pattern;
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+      }
+
+      animationFrameId.current = requestAnimationFrame(draw);
+    };
+
+    animationFrameId.current = requestAnimationFrame(draw);
+
     return () => {
-      if (animationFrameId.current) {
+      if (animationFrameId.current !== null) {
         cancelAnimationFrame(animationFrameId.current);
       }
     };
-  }, [animate]);
+  }, [grain_options]);
 
   return (
     <div className="fixed left-0 top-0 inset-0 z-50 pointer-events-none w-full h-full">
