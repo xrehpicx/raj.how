@@ -20,7 +20,7 @@ export const revalidate = 100;
 export default async function Page({
   searchParams,
 }: {
-  searchParams: { ref?: string };
+  searchParams?: { ref?: string };
 }) {
   return (
     <main>
@@ -77,7 +77,7 @@ export default async function Page({
         <FlickeringGrid color="#7474FF" />
       </div>
       <BackgroundGradentProvider className="h-screen -z-10 w-full opacity-30" />
-      {searchParams["ref"] === "phonely" ? <PhonelyWidget /> : null}
+      {searchParams?.ref === "phonely" ? <PhonelyWidget /> : null}
     </main>
   );
 }
