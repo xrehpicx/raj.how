@@ -1,28 +1,38 @@
-import type { Metadata } from "next";
-import { DM_Sans, Inter } from "next/font/google";
-import "./globals.css";
-import { cn } from "@/lib/utils";
-import { TopBlur } from "@/components/top-blur";
-import { SpeedInsights } from "@vercel/speed-insights/next";
-import { TooltipProvider } from "@/components/ui/tooltip";
-import { AuthProvider } from "@/context/auth/AuthProvider";
+import type { Metadata } from 'next';
+import { Fraunces, Lavishly_Yours, Newsreader } from 'next/font/google';
+import './globals.css';
 
-const inter = Inter({ subsets: ["latin"], variable: "--body-font" });
-const dm = DM_Sans({ subsets: ["latin"], variable: "--display-font" });
+const bodyFont = Newsreader({
+  subsets: ['latin'],
+  variable: '--font-body',
+  display: 'swap',
+});
+
+const headingFont = Fraunces({
+  subsets: ['latin'],
+  variable: '--font-heading',
+  display: 'swap',
+});
+
+const titleFont = Lavishly_Yours({
+  subsets: ['latin'],
+  variable: '--font-title',
+  weight: '400',
+  display: 'swap',
+});
 
 export const metadata: Metadata = {
-  title: "Raj Sharma - Portfolio",
-  creator: "Raj Sharma",
-  metadataBase: new URL("https://raj.how/"),
-  description: "Building experimental design systems",
-  twitter: {
-    card: "summary_large_image",
-    site: "@xrehpicx",
-    creator: "@xrehpicx",
-    images: ["twitter-image.png"],
+  title: {
+    default: 'Raj Sharma',
+    template: '%s - Raj Sharma',
   },
-  openGraph: {
-    images: "/opengraph-image.png",
+  creator: 'Raj Sharma',
+  metadataBase: new URL('https://raj.how/'),
+  description: 'Breaking and building.',
+  twitter: {
+    card: 'summary',
+    site: '@xrehpicx',
+    creator: '@xrehpicx',
   },
 };
 
@@ -32,19 +42,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html suppressHydrationWarning lang="en">
-      <SpeedInsights />
+    <html lang="en">
       <body
-        className={cn(
-          inter.className,
-          inter.variable,
-          dm.variable,
-          "relative antialiased",
-        )}
+        className={`${bodyFont.variable} ${headingFont.variable} ${titleFont.variable}`}
       >
-        <TooltipProvider>
-          <AuthProvider>{children}</AuthProvider>
-        </TooltipProvider>
+        {children}
       </body>
     </html>
   );

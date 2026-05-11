@@ -1,0 +1,26 @@
+# Dependencies
+node_modules/
+.pnpm-store/
+
+# Build outputs
+.next/
+build/
+dist/
+out/
+
+# Generated files
+*.tsbuildinfo
+
+# Environment files
+.env*
+!.env.example
+
+# Package manager files
+pnpm-lock.yaml
+
+# IDE files
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
