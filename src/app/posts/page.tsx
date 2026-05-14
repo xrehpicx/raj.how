@@ -12,23 +12,33 @@ export default function PostsPage() {
   const posts = getPosts();
 
   return (
-    <main>
-      <p>
+    <main className="site-shell">
+      <nav className="post-nav" aria-label="Breadcrumb">
         <a href="/">home</a>
-      </p>
-      <h1>writing</h1>
-      <ul>
-        {posts.map((post) => (
-          <li key={post.slug}>
-            <a href={post.external || `/posts/${post.slug}`}>
-              {post.title}
-              {post.external ? ' [offsite]' : ''}
-            </a>
-            {post.date ? <span> - {post.date}</span> : null}
-            {post.description ? <span> - {post.description}</span> : null}
-          </li>
-        ))}
-      </ul>
+      </nav>
+      <header className="hero-panel compact-hero">
+        <h1>Writing</h1>
+      </header>
+      <section className="content-section" aria-label="All writing">
+        <ul className="entry-list">
+          {posts.map((post) => (
+            <li key={post.slug}>
+              <a
+                className="entry-card"
+                href={post.external || `/posts/${post.slug}`}
+              >
+                <span className="entry-title">
+                  {post.title}
+                  {post.external ? ' [offsite]' : ''}
+                </span>
+                <span className="entry-meta">
+                  {[post.date, post.description].filter(Boolean).join(' / ')}
+                </span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </section>
     </main>
   );
 }

@@ -11,40 +11,66 @@ export default function Home() {
       project.section === 'Favorite Projects' ||
       project.section === 'Work Projects'
   );
-  const projectSections = ['Favorite Projects', 'Work Projects'];
+  const projectSections = [
+    { id: 'favorite-projects', label: 'Favorite Projects' },
+    { id: 'work-projects', label: 'Work Projects' },
+  ];
 
   return (
-    <main>
-      <Markdown content={home.body} />
+    <main className="site-shell">
+      <header className="hero-panel">
+        <Markdown content={home.body} className="hero-copy" />
+      </header>
 
-      <h2>Writing</h2>
-      <ul>
-        {posts.map((post) => (
-          <li key={post.slug}>
-            <a href={post.external || `/posts/${post.slug}`}>
-              {post.title}
-              {post.external ? ' [offsite]' : ''}
-            </a>
-            {post.description ? <span> - {post.description}</span> : null}
-          </li>
-        ))}
-      </ul>
+      <section className="content-section" aria-labelledby="writing-heading">
+        <h2 id="writing-heading">Writing</h2>
+        <ul className="entry-list">
+          {posts.map((post) => (
+            <li key={post.slug}>
+              <a
+                className="entry-card"
+                href={post.external || `/posts/${post.slug}`}
+              >
+                <span className="entry-title">
+                  {post.title}
+                  {post.external ? ' [offsite]' : ''}
+                </span>
+                {post.description ? (
+                  <span className="entry-description">{post.description}</span>
+                ) : null}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </section>
 
       {projectSections.map((section) => (
-        <section key={section}>
-          <h2>{section}</h2>
-          <ul>
+        <section
+          className="content-section"
+          key={section.id}
+          aria-labelledby={`${section.id}-heading`}
+        >
+          <h2 id={`${section.id}-heading`}>{section.label}</h2>
+          <ul className="entry-list">
             {projects
-              .filter((project) => project.section === section)
+              .filter((project) => project.section === section.label)
               .map((project) => (
                 <li key={project.slug}>
                   {project.url ? (
-                    <a href={project.url}>{project.title}</a>
+                    <a className="entry-card" href={project.url}>
+                      <span className="entry-title">{project.title}</span>
+                      {project.contribution ? (
+                        <span className="entry-kicker">oss contribution</span>
+                      ) : null}
+                      {project.body ? (
+                        <span className="entry-description">
+                          {project.body}
+                        </span>
+                      ) : null}
+                    </a>
                   ) : (
                     project.title
                   )}
-                  {project.contribution ? ' [oss contribution]' : ''}
-                  {project.body ? <span> - {project.body}</span> : null}
                 </li>
               ))}
           </ul>

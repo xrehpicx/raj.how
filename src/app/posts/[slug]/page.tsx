@@ -37,18 +37,20 @@ export default async function PostPage({ params }: Props) {
   if (!post) notFound();
 
   return (
-    <main>
-      <nav className="post-nav">
+    <main className="site-shell article-page">
+      <nav className="post-nav" aria-label="Breadcrumb">
         <a href="/">home</a> / <a href="/posts">writing</a>
       </nav>
 
-      <article>
-        <h1>{post.title}</h1>
-        <p className="post-meta">
-          {[post.date, post.author].filter(Boolean).join(' - ')}
-        </p>
-        {post.description ? <p>{post.description}</p> : null}
-        <Markdown content={post.body} />
+      <article className="article-shell">
+        <header className="article-header">
+          <h1>{post.title}</h1>
+          <p className="post-meta">
+            {[post.date, post.author].filter(Boolean).join(' / ')}
+          </p>
+          {post.description ? <p>{post.description}</p> : null}
+        </header>
+        <Markdown content={post.body} className="article-content" />
       </article>
     </main>
   );
