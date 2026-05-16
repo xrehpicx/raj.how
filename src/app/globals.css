@@ -394,16 +394,72 @@ hr {
 
 @media (max-width: 640px) {
   body {
-    font-size: 17px;
+    font-size: 16px;
+    line-height: 1.48;
+  }
+
+  h1 {
+    font-size: clamp(3.8rem, 19vw, 5.2rem);
+  }
+
+  h2 {
+    font-size: clamp(2.6rem, 12vw, 3.6rem);
   }
 
   .site-shell {
     width: min(100% - 0.8rem, 980px);
-    border-radius: 22px;
+    margin: 0.65rem auto;
+    padding: 0.7rem;
+    border-radius: 18px;
   }
 
   .hero-panel,
   .article-shell {
-    border-radius: 18px;
+    padding: 0.9rem;
+    border-radius: 14px;
+  }
+
+  .hero-panel {
+    margin-bottom: 1.3rem;
+  }
+
+  .hero-copy p {
+    margin-left: 0;
+    font-size: clamp(1rem, 5vw, 1.2rem);
+    line-height: 1.08;
+  }
+
+  .hero-copy p:first-of-type {
+    font-size: clamp(1.2rem, 6vw, 1.5rem);
+    line-height: 0.95;
+  }
+
+  .content-section {
+    margin-top: 1.5rem;
+  }
+
+  .entry-list {
+    gap: 0.5rem;
+    padding: 0.45rem;
+    border-radius: 14px;
+  }
+
+  .entry-card {
+    min-height: 3.2rem;
+    padding: 0.68rem 0.74rem;
+    border-radius: 12px;
+  }
+
+  .entry-title {
+    font-size: 1.02rem;
+    line-height: 1.06;
+  }
+
+  .entry-description,
+  .entry-meta,
+  .entry-kicker,
+  .post-meta {
+    font-size: 0.86rem;
+    line-height: 1.25;
   }
 }
