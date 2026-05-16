@@ -135,11 +135,13 @@ li {
 }
 
 .site-shell {
+  --shell-padding: clamp(1rem, 3vw, 2rem);
+  --shell-child-radius: 24px;
   width: min(100% - 1.5rem, 980px);
   margin: clamp(1.25rem, 5vw, 3rem) auto;
-  padding: clamp(1rem, 3vw, 2rem);
+  padding: var(--shell-padding);
   border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 30px;
+  border-radius: calc(var(--shell-child-radius) + var(--shell-padding));
   background: linear-gradient(180deg, var(--shell-top), var(--shell-bottom));
   box-shadow: var(--shadow-lift);
 }
@@ -153,7 +155,7 @@ li {
 .hero-panel {
   margin-bottom: clamp(2rem, 6vw, 4rem);
   padding: clamp(1.1rem, 3vw, 1.8rem);
-  border-radius: 24px;
+  border-radius: var(--shell-child-radius);
   background: #101010;
   box-shadow: var(--shadow-inset);
 }
@@ -181,11 +183,13 @@ li {
 }
 
 .entry-list {
+  --entry-list-padding: clamp(0.65rem, 2vw, 0.9rem);
+  --entry-card-radius: 16px;
   display: grid;
   gap: 0.8rem;
   margin: 0;
-  padding: clamp(0.65rem, 2vw, 0.9rem);
-  border-radius: 22px;
+  padding: var(--entry-list-padding);
+  border-radius: calc(var(--entry-card-radius) + var(--entry-list-padding));
   background: var(--well);
   box-shadow: var(--shadow-inset);
   list-style: none;
@@ -199,7 +203,7 @@ li {
   display: grid;
   min-height: 4rem;
   padding: 1rem 1.05rem;
-  border-radius: 16px;
+  border-radius: var(--entry-card-radius);
   background: linear-gradient(180deg, #232323, #191919);
   box-shadow: var(--shadow-crisp);
   color: var(--text);
@@ -268,7 +272,7 @@ li {
 
 .article-shell {
   padding: clamp(1rem, 3vw, 1.7rem);
-  border-radius: 24px;
+  border-radius: var(--shell-child-radius);
   background: #101010;
   box-shadow: var(--shadow-inset);
 }
@@ -407,16 +411,15 @@ hr {
   }
 
   .site-shell {
+    --shell-padding: 0.7rem;
+    --shell-child-radius: 14px;
     width: min(100% - 0.8rem, 980px);
     margin: 0.65rem auto;
-    padding: 0.7rem;
-    border-radius: 18px;
   }
 
   .hero-panel,
   .article-shell {
     padding: 0.9rem;
-    border-radius: 14px;
   }
 
   .hero-panel {
@@ -439,15 +442,14 @@ hr {
   }
 
   .entry-list {
+    --entry-list-padding: 0.45rem;
+    --entry-card-radius: 12px;
     gap: 0.5rem;
-    padding: 0.45rem;
-    border-radius: 14px;
   }
 
   .entry-card {
     min-height: 3.2rem;
     padding: 0.68rem 0.74rem;
-    border-radius: 12px;
   }
 
   .entry-title {
