@@ -7,4 +7,4 @@ description: 'Breaking and building.'
 
 Breaking and building.
 
-CTO and Co Founder at [imai.studio](https://imai.studio).
+CTO and Co Founder of [imai.studio](https://imai.studio).
