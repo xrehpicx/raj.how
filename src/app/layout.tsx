@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import { Fraunces, Lavishly_Yours, Newsreader } from 'next/font/google';
 import './globals.css';
 
@@ -20,6 +20,11 @@ const titleFont = Lavishly_Yours({
   weight: '400',
   display: 'swap',
 });
+
+export const viewport: Viewport = {
+  themeColor: '#151515',
+  colorScheme: 'dark',
+};
 
 export const metadata: Metadata = {
   title: {

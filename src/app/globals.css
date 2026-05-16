@@ -30,7 +30,7 @@
 
 html {
   min-height: 100%;
-  background: var(--scene);
+  background: var(--scene-soft);
 }
 
 body {
