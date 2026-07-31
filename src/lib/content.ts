@@ -112,9 +112,13 @@ function readCollection(directory: string) {
 export const getHome = cache(() => readMarkdownFile('home.md'));
 
 export const getPosts = cache(() =>
-  readCollection('posts').sort((a, b) =>
-    (b.date || '').localeCompare(a.date || '')
-  )
+  readCollection('posts').sort((a, b) => {
+    const externalPriority = Number(Boolean(b.external)) - Number(Boolean(a.external));
+
+    return (
+      externalPriority || (b.date || '').localeCompare(a.date || '')
+    );
+  })
 );
 
 export const getLocalPosts = cache(() =>

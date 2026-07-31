@@ -77,7 +77,7 @@ git clone --depth 1 https://github.com/torvalds/linux.git
 cd linux
 ```
 
-Once done we can use the menuconfig make script that the linux gods have made for us to configure the kernel params using a UI, this is why we installed **libncurses-dev, **if you have experience setting these up then this dependency can be removed.
+Once done we can use the menuconfig make script that the linux gods have made for us to configure the kernel params using a UI. This is why we installed **libncurses-dev**; if you have experience setting these up then this dependency can be removed.
 
 ```bash
 make menuconfig

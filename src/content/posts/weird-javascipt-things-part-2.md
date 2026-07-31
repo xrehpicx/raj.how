@@ -83,11 +83,11 @@ Exploring these resources will give you a deeper understanding of the potential 
 
 ### **Regex Statefulness**
 
-Yep, using the global flag (`**/g**`) in regular expressions lets you keep track of the state of previous matches right within the expression itself. It's pretty handy, but you need to be careful when dealing with global regex variables that are used multiple times.
+Yep, using the global flag (`/g`) in regular expressions lets you keep track of the state of previous matches right within the expression itself. It's pretty handy, but you need to be careful when dealing with global regex variables that are used multiple times.
 
 Here's the deal: when a regular expression has the global flag, it remembers where the previous match left off. So, if you're not careful, it can lead to some unexpected results.
 
-To play it safe, always keep an eye on those global regex variables. If you're reusing them, make sure to reset the state when needed. You can do this by using the `**.lastIndex**` property or creating a fresh regular expression object.
+To play it safe, always keep an eye on those global regex variables. If you're reusing them, make sure to reset the state when needed. You can do this by using the `.lastIndex` property or creating a fresh regular expression object.
 
 By being aware of this statefulness and handling it correctly, you'll avoid any surprise outcomes in your code.
 
@@ -125,9 +125,9 @@ for (const [k, v] of amap) {
 }
 ```
 
-In this code snippet, we use a `**for...of**` loop to go through the map and get the key and its corresponding value. It's pretty similar to how it works in many other languages. A lot of folks tend to go with this method for most map iterations.
+In this code snippet, we use a `for...of` loop to go through the map and get the key and its corresponding value. It's pretty similar to how it works in many other languages. A lot of folks tend to go with this method for most map iterations.
 
-But hey, here's where things get interesting. Let's take a look at the `**.forEach**` method:
+But hey, here's where things get interesting. Let's take a look at the `.forEach` method:
 
 ```typescript
 const ymap = new Map<string, number>();
@@ -136,9 +136,9 @@ ymap.forEach((v, k) => {
 });
 ```
 
-The key difference here is that the `**.forEach**` method doesn't give us the key followed by its value. Instead, it takes a callback function where the value is the first parameter and the key is the second parameter.
+The key difference here is that the `.forEach` method doesn't give us the key followed by its value. Instead, it takes a callback function where the value is the first parameter and the key is the second parameter.
 
-This design choice was intentional and aimed at keeping things simple for beginners. However, it can be confusing for those coming from other languages or for those who prefer using `**for...of**` loops. One particular challenge arises when switching from `**.forEach**` to `**for...of**` because the latter is the only looping construct that supports `**await**`ing between iterations. This switch can lead to further confusion, especially if the map returns values of the same type for both keys and values, as TypeScript won't raise a warning in that case.
+This design choice was intentional and aimed at keeping things simple for beginners. However, it can be confusing for those coming from other languages or for those who prefer using `for...of` loops. One particular challenge arises when switching from `.forEach` to `for...of` because the latter is the only looping construct that supports `await` between iterations. This switch can lead to further confusion, especially if the map returns values of the same type for both keys and values, as TypeScript won't raise a warning in that case.
 
 So, it's important to be aware of this difference and choose the iteration method that best suits your needs and programming style.
 
@@ -146,7 +146,7 @@ So, it's important to be aware of this difference and choose the iteration metho
 
 Let's talk about bitwise operations in JavaScript.
 
-In JavaScript, the default numeric type is `**Number**`, which can represent both integer and floating-point values. However, all numeric values in JavaScript are represented as 64-bit floating-point numbers, following the IEEE 754 standard.
+In JavaScript, the default numeric type is `Number`, which can represent both integer and floating-point values. However, all numeric values in JavaScript are represented as 64-bit floating-point numbers, following the IEEE 754 standard.
 
 Now, let's look at an example:
 
@@ -158,7 +158,7 @@ some_number += 1;
 
 This result makes sense till now, but
 
-When we add 1 to `**some_number**`, we get the expected result.
+When we add 1 to `some_number`, we get the expected result.
 
 Moving on to bitwise operations:
 
@@ -168,7 +168,7 @@ some_number | 0;
 // 1410065408
 ```
 
-Uh-oh! Performing any bitwise operation, like using the bitwise OR operator (`**|**`), converts the number into a 32-bit **signed** integer. This behavior is different from what you might expect if you're coming from languages like C or others.
+Uh-oh! Performing any bitwise operation, like using the bitwise OR operator (`|`), converts the number into a 32-bit **signed** integer. This behavior is different from what you might expect if you're coming from languages like C or others.
 
 So, if you're using bitwise operations in JavaScript to optimize your code, thinking it'll work similar to other languages, well, it won't. It's important to be aware of this difference.
 

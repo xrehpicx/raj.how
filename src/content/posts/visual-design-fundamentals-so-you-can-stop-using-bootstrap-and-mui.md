@@ -27,7 +27,7 @@ The list I'll go through isn't in any particular order of importance, as they ar
 
 To create effective visual hierarchy in design, **prioritize content** and use principles such as **contrast, size,** and **spacing** to direct attention to the most important information. Effective use of visual hierarchy can produce designs that are both visually appealing and easy to navigate.
 
-_**Lets look at **\_\_**[linear’s Integration page](https://linear.app/integrations)**_
+_Let’s look at [Linear’s integration page](https://linear.app/integrations)._
 
 ![image](/images/posts/visual-design-fundamentals-so-you-can-stop-using-bootstrap-and-mui/01-image-f80cc2243f.png)
 
@@ -55,7 +55,7 @@ This does not render the bottom bar redundant, as it still provides a quick glan
 
 Color theory is crucial to visual design. Knowing the meanings and associations of colors and using them effectively can elevate the impact and effectiveness of a design. Developers can use color theory to create visually appealing and communicative designs that enhance the user experience.
 
-_**Lets look at the a section from \*\*\*\***[Vercel’s](https://vercel.com/)**\*\*** insights dashboard page.\*\*_
+_Let’s look at a section from [Vercel’s](https://vercel.com/) insights dashboard page._
 
 ![image](/images/posts/visual-design-fundamentals-so-you-can-stop-using-bootstrap-and-mui/04-image-7184b0f1af.png)
 
@@ -73,7 +73,7 @@ Nextcloud can accomplish this because they use accents sparingly on each page. A
 
 Using too many colors can confuse users. It's important to be judicious with colors, even when using a single color. There are often multiple shades available, so we should choose one that is sufficient without overwhelming users.
 
-_**Lets look at **\_\_**[monkeytype](https://monkeytype.com/)**_
+_Let’s look at [Monkeytype](https://monkeytype.com/)._
 
 ![image](/images/posts/visual-design-fundamentals-so-you-can-stop-using-bootstrap-and-mui/06-image-fbec496fd8.png)
 

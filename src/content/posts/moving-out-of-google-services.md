@@ -49,14 +49,15 @@ Simplest way to set this up would be by using ubuntu and its snap store nextclou
 
 [How To Install and Configure Nextcloud on Ubuntu 20.04 | DigitalOcean](https://www.digitalocean.com/community/tutorials/how-to-install-and-configure-nextcloud-on-ubuntu-20-04)
 
-But for our setup we will be using Docker so you can set this up on almost any other distro or even \_windows \_if thats something you really want, This will also make moving our entire nextcloud data to our external storage making it trivial for future compute upgrades if you end up using this more (you will).
+But for our setup we will be using Docker so you can set this up on almost any other distro or even _Windows_ if thats something you really want. This will also make moving our entire nextcloud data to our external storage trivial for future compute upgrades if you end up using this more (you will).
 
-1. **Setup docker on OS of choice, specifically Docker Engine**
+1. **Set up Docker on your OS of choice, specifically Docker Engine**
 
 [Install Docker Engine](https://docs.docker.com/engine/install/)
 
-1. **Make sure you have \*\***`docker compose`\***\* as command.
-   **You can try running `docker compose --help` , if this command does not exist then follow
+2. **Make sure you have `docker compose` available as a command.**
+
+   You can try running `docker compose --help`. If this command does not exist, follow:
 
 [Install the Compose plugin](https://docs.docker.com/compose/install/linux/)
 
@@ -64,7 +65,7 @@ But for our setup we will be using Docker so you can set this up on almost any o
 
 For our example we will assume you have 2 storage disks connected to your server. To find what disks you want to use run `sudo fdisk -l` before and after you have plugged in your disks.
 
-### **Install ZFS**
+### Install ZFS
 
 For our example we will use ubuntu and so will use apt. use the equivalent for your distro, most other steps post this should be identical.
 
@@ -79,17 +80,17 @@ sudo apt install zfsutils-linux
 sudo fdisk -l
 ```
 
-Look for the devices that correspond to the disks you intend to use (e.g., `**/dev/sda**` and `**/dev/sdb**`).
+Look for the devices that correspond to the disks you intend to use (e.g., `/dev/sda` and `/dev/sdb`).
 
 > Make sure these disks do not contain important data, as creating a ZFS pool will erase existing data on them.
 
-### \***\*Create the ZFS Pool\*\***
+### Create the ZFS Pool
 
 ```bash
 sudo zpool create nextcloudPool mirror /dev/sda /dev/sdb
 ```
 
-This command creates a ZFS pool named `**nextcloudPool**` with two disks in a mirrored configuration, providing redundancy.
+This command creates a ZFS pool named `nextcloudPool` with two disks in a mirrored configuration, providing redundancy.
 
 `/dev/sda` and `/dev/sdb` are examples from before, but if you dont have any other external disks connected then they will show up with these names too.
 
@@ -101,7 +102,7 @@ Not absolutely needed but just good practice to do this.
 sudo zfs create nextcloudPool/data
 ```
 
-### \***\*Set Mount Point\*\***
+### Set Mount Point
 
 To now mount this pool to a folder we will use zfs set so it handles auto mount on boot etc for us.
 
@@ -115,7 +116,7 @@ Now any files that we store in `/mnt/nextcloud` will be stored in our zfs pool. 
 
 So ideally if you plugged in two disks of each 1TB you should now see around 1TB of free space when you run `df`.
 
-### \***\*Verify Pool Status\*\***
+### Verify Pool Status
 
 Finally, verify the status of your ZFS pool to ensure everything is working as expected.
 
